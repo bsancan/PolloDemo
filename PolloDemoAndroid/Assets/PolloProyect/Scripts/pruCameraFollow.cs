@@ -27,11 +27,11 @@ public class pruCameraFollow : MonoBehaviour {
 
     //}
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         Vector3 desiredPosition = Target.position + Offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, SmoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
-        transform.LookAt(Target);
+        //transform.LookAt(Target);
     }
 }

@@ -17,10 +17,27 @@ public class pruDrag : MonoBehaviour {
         if (Input.touchCount > 0) {
             _touch = Input.GetTouch(0);
 
-            if (_touch.phase == TouchPhase.Began) {
-                print(_touch.position);
-                touchPosition = Camera.main.ScreenToWorldPoint(_touch.position);
-                rb.position = new Vector3(touchPosition.x, 1f, rb.position.z);
+            Touch[] myTouches = Input.touches;
+
+            for (int i = 0; i < Input.touchCount; i++) {
+
+            }
+
+            if (_touch.phase == TouchPhase.Began)
+            {
+                print(_touch.position.ToString() + " - " + _touch.fingerId);
+
+                
+
+                //touchPosition = Camera.main.ScreenToWorldPoint(_touch.position);
+                //rb.position = new Vector3(touchPosition.x, 1f, rb.position.z);
+            }
+            else if (_touch.phase == TouchPhase.Moved)
+            {
+
+            }
+            else if (_touch.phase == TouchPhase.Ended) {
+
             }
         }
 
