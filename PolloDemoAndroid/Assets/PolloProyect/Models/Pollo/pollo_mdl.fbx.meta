@@ -219,7 +219,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: pollo_model_0003_Pollo_robot
-    second: {fileID: 2100000, guid: d867181a0bc620740aff3691d4389321, type: 2}
+    second: {fileID: 2100000, guid: c90e57f13b7192b42862f2d348241ef0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
