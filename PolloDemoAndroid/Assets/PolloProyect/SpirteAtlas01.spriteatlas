@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SpirteAtlas01
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 21fd5744224760f498a2a7bd6e18e6b8, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: e1e8579d50ff8c64db2287b30a5b5a00, type: 3}
+  - {fileID: 21300000, guid: d5024b35236e6c845bfb8665e9ec7305, type: 3}
+  - {fileID: 21300000, guid: c633b4e2237cb12449d21d6b27689a0a, type: 3}
+  - {fileID: 21300000, guid: 833a9bbf17b04fa4eafaf9d6ef74c5a4, type: 3}
+  - {fileID: 21300000, guid: 09ff40d32d0bf714f856aedcd77e854e, type: 3}
+  - {fileID: 21300000, guid: 16a4672342e44e742b2642e306a96bae, type: 3}
+  - {fileID: 21300000, guid: b29fa3cd9da591c4da79a53c1b0b64e4, type: 3}
+  - {fileID: 21300000, guid: 21ed7030ed069b44b98b2fe210567f92, type: 3}
+  - {fileID: 21300000, guid: 3089cdd79443d174ca694c75f3854c8f, type: 3}
+  - {fileID: 21300000, guid: 28350e78e3ecdbc4ca47876080f9626c, type: 3}
+  - {fileID: 21300000, guid: 3d38e432c61b32249ae1e54faf72e3aa, type: 3}
+  - {fileID: 21300000, guid: 816b274888a6ee244b4b65a6ea6a1dd3, type: 3}
+  - {fileID: 21300000, guid: ac78c75b4f098df44970c96bea48c3f5, type: 3}
+  - {fileID: 21300000, guid: 674ab17f57e809345913bbe42060f879, type: 3}
+  - {fileID: 21300000, guid: 829ec24e794634b43a7287c9f9b35da9, type: 3}
+  - {fileID: 21300000, guid: 49c2b1ca1a8e8224aadf5cbf6e4b962b, type: 3}
+  - {fileID: 21300000, guid: 7b4209f3b641b224eb093244d32adcce, type: 3}
+  - {fileID: 21300000, guid: 0672b8553406f2f47a20a74933e6b8ff, type: 3}
+  - {fileID: 21300000, guid: 5324823739e022e40a67db653452c3a1, type: 3}
+  - {fileID: 21300000, guid: fb819ec847ab1194781020739c2070a6, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Pll_Ayd_md
+  - Dialogos
+  - Flecha_menu-02
+  - Flecha_menu-01
+  - Flecha_menu-03-01
+  - energia-01
+  - Direcciones_1-01
+  - Direcciones_3-01
+  - mira
+  - Escudo
+  - Bomba
+  - Medidor
+  - flatDark06
+  - flatDark00
+  - Joystick_dpr
+  - ic_add_white_48dp
+  - ic_location_searching_white_48dp
+  - ic_all_out_white_48dp
+  - ic_trending_flat_white_48dp
+  - ic_crop_free_white_48dp
+  m_Tag: SpirteAtlas01
+  m_IsVariant: 0

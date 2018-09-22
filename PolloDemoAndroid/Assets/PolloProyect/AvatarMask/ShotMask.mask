@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ShotMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: controles
+    m_Weight: 0
+  - m_Path: controles/master_anm
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_inferior
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_inferior/pierna_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_inferior/pierna_der/dedos_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_inferior/pierna_der1
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_inferior/pierna_der1/dedos_izq
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/boca_inf
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/boca_sup
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_der/ala_inf_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_der/ala_sor_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_der/cn_ala_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_izq
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_izq/ala_inf_izq
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_izq/ala_sor_izq
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/master_brazo_izq/cn_ala_izq
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/ojo_der
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/ojo_izq
+    m_Weight: 0
+  - m_Path: controles/master_anm/Cuerpo_superior/sombrero 1
+    m_Weight: 0
+  - m_Path: model
+    m_Weight: 1
+  - m_Path: model/boca_down1
+    m_Weight: 1
+  - m_Path: model/boca_down2
+    m_Weight: 1
+  - m_Path: model/Braz_canon
+    m_Weight: 1
+  - m_Path: model/Braz_canon2
+    m_Weight: 1
+  - m_Path: model/cuerpo_down1
+    m_Weight: 0
+  - m_Path: model/cuerpo_up
+    m_Weight: 1
+  - m_Path: model/pierna
+    m_Weight: 0
+  - m_Path: model/pierna/pollo_dd_der_1
+    m_Weight: 0
+  - m_Path: model/pierna/pollo_dd_der_2
+    m_Weight: 0
+  - m_Path: model/pierna/pollo_dd_der_3
+    m_Weight: 0
+  - m_Path: model/pierna/Pollo_pierna_Der
+    m_Weight: 0
+  - m_Path: model/pierna/Pollo_prn_msl_der
+    m_Weight: 0
+  - m_Path: model/Pollo_ala_inf_der
+    m_Weight: 1
+  - m_Path: model/Pollo_ala_inf_der1
+    m_Weight: 1
+  - m_Path: model/Pollo_ala_sup_der
+    m_Weight: 1
+  - m_Path: model/Pollo_ala_sup_der1
+    m_Weight: 1
+  - m_Path: model/Pollo_art_der
+    m_Weight: 1
+  - m_Path: model/Pollo_art_der1
+    m_Weight: 1
+  - m_Path: model/Pollo_brz__int_der
+    m_Weight: 1
+  - m_Path: model/Pollo_brz__int_izq
+    m_Weight: 1
+  - m_Path: model/Pollo_brz_canon1
+    m_Weight: 1
+  - m_Path: model/Pollo_brz_canon2
+    m_Weight: 1
+  - m_Path: model/Pollo_cj_der
+    m_Weight: 1
+  - m_Path: model/Pollo_cj_izq
+    m_Weight: 1
+  - m_Path: model/Pollo_Crp_int
+    m_Weight: 0
+  - m_Path: model/pollo_dd_der_4
+    m_Weight: 0
+  - m_Path: model/pollo_dd_der_5
+    m_Weight: 0
+  - m_Path: model/pollo_dd_der_6
+    m_Weight: 0
+  - m_Path: model/Pollo_ojo_der
+    m_Weight: 1
+  - m_Path: model/Pollo_pierna_Der1
+    m_Weight: 0
+  - m_Path: model/Pollo_prn_msl_der1
+    m_Weight: 0
+  - m_Path: model/sombrero
+    m_Weight: 1

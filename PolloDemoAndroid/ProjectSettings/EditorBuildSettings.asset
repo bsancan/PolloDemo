@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PolloProyect/Scenes/PruebaHorizonX.unity
-    guid: 73dc34ca5c8e9c64c971a2e969664e71
+    path: Assets/PolloProyect/Scenes/Nivel01.unity
+    guid: e71eae13d8deb9c48a7c3a3ddb40bcc5
   m_configObjects: {}
