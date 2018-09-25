@@ -8,6 +8,7 @@ public class UILevels : MonoBehaviour {
     public static UILevels uiLevelsInstance;
     public RectTransform rtCrossHairParent;
     public RectTransform rtCrossHair;
+    public RectTransform rtCrossHairB;
     [SerializeField]
     private Color crossHairColor00;
     [SerializeField]

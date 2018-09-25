@@ -10,6 +10,7 @@ public class Character : MonoBehaviour {
     public string characterName;
     public Animator animator;
 
+    public Transform characterModel;
     // Use this for initialization
     void Start () {
 		

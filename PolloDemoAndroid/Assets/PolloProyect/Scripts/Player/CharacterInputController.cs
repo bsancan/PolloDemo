@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class CharacterInputController : MonoBehaviour {
     public Camera mainCamera;
+    public Transform crossHairFromWorld;
+    public Transform crossHairFromWorldB;
     public LeftJoystick leftJoystick; // the game object containing the LeftJoystick script
     public RightJoystick rightJoystick; // the game object containing the RightJoystick script
+    public bool activateRightJoyStick;
     public float moveSpeed = 6.0f; // movement speed of the player character
+    public float rotationSpeed = 1f;
     public float crossHairSpeed = 2f;
 
     public float distanceRaycast = 10f;
@@ -20,7 +24,10 @@ public class CharacterInputController : MonoBehaviour {
     private Vector3 leftJoystickInput; // holds the input of the Left Joystick
     private Vector3 rightJoystickInput; // hold the input of the Right Joystick
     private Animator characterAnimator; // the animator controller of the player character
-    
+
+    private float _screenW;
+    private float _screenH;
+
     //[Header("Animaciones")]
     static int s_DeadHash = Animator.StringToHash("Dead");
     static int s_ShotHash = Animator.StringToHash("Shot");
@@ -92,7 +99,21 @@ public class CharacterInputController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         characterAnimator = character.GetComponent<Animator>();
-	}
+        _screenH = Screen.height;
+        _screenW = Screen.width;
+
+        if (!activateRightJoyStick)
+        {
+            UILevels.uiLevelsInstance.GetComponent<DualJoystickTouchContoller>().ActivateRightJoyStick(false);
+        }
+        else
+        {
+            UILevels.uiLevelsInstance.GetComponent<DualJoystickTouchContoller>().ActivateRightJoyStick(true);
+
+
+        }
+
+    }
 
     // Update is called once per frame
     protected void Update() {
@@ -103,7 +124,14 @@ public class CharacterInputController : MonoBehaviour {
 
         MovingCharacterXY();
 
-        MovingCrosshair();
+        if (activateRightJoyStick)
+        {
+            MovingCrosshair();
+        }
+        else {
+            MovingCrosshairFromWorld();
+        }
+   
        
 
        
@@ -131,8 +159,14 @@ public class CharacterInputController : MonoBehaviour {
                 );
             character.transform.localPosition = velFixed;
             characterAnimator.SetFloat(s_MovingHash, xMovementLeftJoystick);
+           
+
             //aniPlayer.SetFloat(horizontalHash, xAxis, 0.1f, animationSpeed * Time.deltaTime);
         }
+
+        Quaternion newRot = Quaternion.Euler(-10f * yMovementLeftJoystick, 20f * xMovementLeftJoystick, 0f);
+        character.characterModel.localRotation = Quaternion.Lerp(character.characterModel.localRotation,
+            newRot, Time.deltaTime * rotationSpeed);
     }
 
     private void MovingCrosshair() {
@@ -142,8 +176,8 @@ public class CharacterInputController : MonoBehaviour {
         if (rightJoystickInput != Vector3.zero)
         {
             jsPosition = new Vector3(
-                Screen.width / 2 + (xMovementRightJoystick * Screen.width * 0.5f),
-                Screen.height / 2 + (yMovementRightJoystick * Screen.height * 0.5f),
+                _screenW / 2 + (xMovementRightJoystick * _screenW * 0.75f),
+                _screenH / 2 + (yMovementRightJoystick * _screenH *0.75f),
                 0f);
 
             characterAnimator.SetBool(s_ShotHash, true);
@@ -151,17 +185,23 @@ public class CharacterInputController : MonoBehaviour {
         else
         {
             jsPosition = new Vector3(
-                Screen.width / 2 ,
-                Screen.height / 2,
+                _screenW / 2 ,
+                _screenH / 2,
                 0f);
             characterAnimator.SetBool(s_ShotHash, false);
         }
+
+     
 
         //transformo el vector jposition en screen position
         Vector2 viewPortPosA = mainCamera.ScreenToViewportPoint(jsPosition);
         Vector2 screenPosA = new Vector2(
                 ((viewPortPosA.x * UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.x) - (UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.x * 0.5f)),
                 ((viewPortPosA.y * UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.y) - (UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.y * 0.5f)));
+
+        //controlo que el crosshair no pase los limites de la pantalla
+        screenPosA = new Vector3(Mathf.Clamp(screenPosA.x, -(_screenW / 2), _screenW / 2),
+            Mathf.Clamp(screenPosA.y, -(_screenH / 2), _screenH / 2), 0f);
 
         UILevels.uiLevelsInstance.rtCrossHair.anchoredPosition = Vector2.Lerp(
             UILevels.uiLevelsInstance.rtCrossHair.anchoredPosition, screenPosA,
@@ -171,18 +211,20 @@ public class CharacterInputController : MonoBehaviour {
         //funciona con hit
         Ray _ray = mainCamera.ScreenPointToRay(jsPosition);
         RaycastHit _rayHit;
-        if (Physics.Raycast(_ray, out _rayHit, distanceRaycast, LayerMask.NameToLayer("Player")))
+        if (Physics.Raycast(_ray, out _rayHit, distanceRaycast))
         {
-            print("hot");
+       
             if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
             {
                 //target = _rayHit.collider.transform.position;
                 UILevels.uiLevelsInstance.SetCrossHairColor01();
+                print(_rayHit.collider.name);
             }
-            else
-            {
-                UILevels.uiLevelsInstance.SetCrossHairColor02();
-            }
+            //else if (_rayHit.collider.gameObject.CompareTag("Player"))
+            //{
+            //    UILevels.uiLevelsInstance.SetCrossHairColor02();
+            //    UILevels.uiLevelsInstance.SetCrossHairColor00();
+            //}
 
         }
         else
@@ -190,6 +232,22 @@ public class CharacterInputController : MonoBehaviour {
              UILevels.uiLevelsInstance.SetCrossHairColor00();
         }
 
+    }
+
+    private void MovingCrosshairFromWorld() {
+        //transformo el vector jposition en screen position
+        Vector2 viewPortPosA = mainCamera.WorldToViewportPoint(crossHairFromWorld.position);
+        Vector2 screenPosA = new Vector2(
+                ((viewPortPosA.x * UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.x) - (UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.x * 0.5f)),
+                ((viewPortPosA.y * UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.y) - (UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.y * 0.5f)));
+
+        UILevels.uiLevelsInstance.rtCrossHair.anchoredPosition = screenPosA;
+
+        Vector2 viewPortPosB = mainCamera.WorldToViewportPoint(crossHairFromWorldB.position);
+        Vector2 screenPosB = new Vector2(
+                ((viewPortPosB.x * UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.x) - (UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.x * 0.5f)),
+                ((viewPortPosB.y * UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.y) - (UILevels.uiLevelsInstance.rtCrossHairParent.sizeDelta.y * 0.5f)));
+        UILevels.uiLevelsInstance.rtCrossHairB.anchoredPosition = screenPosB;
     }
 
     protected virtual void LateUpdate()

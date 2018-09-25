@@ -198,4 +198,9 @@ public class DualJoystickTouchContoller : MonoBehaviour
             }
         }
     }
+
+    public void ActivateRightJoyStick(bool b) {
+        rightJoystickAlwaysVisible = b;
+        rightJoystick.gameObject.SetActive(b);
+    }
 }
