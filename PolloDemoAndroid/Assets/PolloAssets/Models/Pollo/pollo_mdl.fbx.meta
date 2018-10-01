@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: cbdb90b323f0a104abf8ac6bd2a37ee9
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: ala_inf_der
     100002: ala_inf_izq
@@ -438,6 +438,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 90
     normalImportMode: 0

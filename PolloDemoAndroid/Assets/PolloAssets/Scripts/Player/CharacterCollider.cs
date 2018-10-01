@@ -7,7 +7,7 @@ using UnityEngine;
 public class CharacterCollider : MonoBehaviour {
 
     static int s_HitHash = Animator.StringToHash("Hit");
-    static int s_BlinkingValueHash;
+    //static int s_BlinkingValueHash;
 
     public struct DeathEvent
     {
@@ -20,7 +20,7 @@ public class CharacterCollider : MonoBehaviour {
         public float worldDistance;
     }
 
-    public CharacterInputController controller;
+    public CharacterManager controller;
 
 
    // [Header("Sound")]
@@ -67,7 +67,7 @@ public class CharacterCollider : MonoBehaviour {
 
         while (time < timer && m_Invincible)
         {
-            Shader.SetGlobalFloat(s_BlinkingValueHash, currentBlink);
+            //Shader.SetGlobalFloat(s_BlinkingValueHash, currentBlink);
 
             // We do the check every frame instead of waiting for a full blink period as if the game slow down too much
             // we are sure to at least blink every frame.
@@ -83,7 +83,7 @@ public class CharacterCollider : MonoBehaviour {
             }
         }
 
-        Shader.SetGlobalFloat(s_BlinkingValueHash, 0.0f);
+        //Shader.SetGlobalFloat(s_BlinkingValueHash, 0.0f);
 
         m_Invincible = false;
     }

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UILevels : MonoBehaviour {
+public class UIManager : MonoBehaviour {
 
-    public static UILevels uiLevelsInstance;
+    public static UIManager uiLevelsInstance;
     public RectTransform rtCrossHairParent;
     public RectTransform rtCrossHair;
     public RectTransform rtCrossHairB;
+
+    public LeftJoystick leftJoystick; // the game object containing the LeftJoystick script
+    public RightJoystick rightJoystick; // the game object containing the RightJoystick script
+
     [SerializeField]
     private Color crossHairColor00;
     [SerializeField]
@@ -33,6 +37,7 @@ public class UILevels : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         imgCrossHair = rtCrossHair.GetComponent<Image>();
+        
     }
 	
 	// Update is called once per frame
