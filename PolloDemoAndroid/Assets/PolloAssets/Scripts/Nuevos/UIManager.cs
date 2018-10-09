@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour {
     private float lifeTime = 0.45f;
 
     private Image imgCrossHair;
+    private Image imgCrossHairB;
+    private GameObject goCrossHairB;
 	// Use this for initialization
 	void Start () {
 		if(uiManagerInstance == null)
@@ -48,7 +50,9 @@ public class UIManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         imgCrossHair = rtCrossHair.GetComponent<Image>();
-        
+        imgCrossHairB = rtCrossHairB.GetComponent<Image>();
+
+        goCrossHairB = rtCrossHairB.gameObject;
     }
 	
 	// Update is called once per frame
@@ -72,6 +76,28 @@ public class UIManager : MonoBehaviour {
     {
         imgCrossHair.color = crossHairColor02;
 
+    }
+
+    public void SetCrossHairBColor00()
+    {
+        imgCrossHairB.color = crossHairColor00;
+
+    }
+
+    public void SetCrossHairBColor01()
+    {
+        imgCrossHairB.color = crossHairColor01;
+
+    }
+
+    public void SetCrossHairBColor02()
+    {
+        imgCrossHairB.color = crossHairColor02;
+
+    }
+
+    public void ShowCrossHairB(bool b) {
+        goCrossHairB.SetActive(b);
     }
 
     public void ShowNegativePoints(int values, Vector3 pos) {

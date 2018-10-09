@@ -73,12 +73,14 @@ public class AmmoManager : MonoBehaviour {
         PlayerAmmo pa = spawnedAmmo.GetComponent<PlayerAmmo>();
         pa.speed = playerAmmoSpeed;
         pa.lifeTime = playerAmmoLifeTime;
-        spawnedAmmo.SetParent(playerAmmo);
+        //spawnedAmmo.SetParent(playerAmmo);
 
         spawnedAmmo.gameObject.SetActive(true);
-        spawnedAmmo.localPosition = Vector3.zero;
+        spawnedAmmo.position = playerAmmo.position + (playerAmmo.forward * 2f);
+        spawnedAmmo.rotation = playerAmmo.rotation;
+        //spawnedAmmo.position = playerAmmo.forward * 1.5f;
 
-        //spawnedAmmo.rotation = rotation;
+        //
 
         playerAmmoQueue.Enqueue(spawnedAmmo);
 

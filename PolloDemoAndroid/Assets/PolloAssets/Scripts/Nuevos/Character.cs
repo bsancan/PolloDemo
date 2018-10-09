@@ -112,24 +112,7 @@ public class Character : MonoBehaviour {
                 Screen.height / 2 + (rightJoystickInput.y * Screen.height * 0.75f),
                 0f);
 
-            characterAnimator.SetBool(s_ShotHash, true);
-
-            //disparo de ammo
-            if (Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-                //spawnSpotCenter.LookAt(target);
-                AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotCenter);
-                //spawnSpotLeft.LookAt(target);
-                //spawnSpotRight.LookAt(target);
-                //AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotLeft.position, spawnSpotLeft.rotation);
-                //AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotRight.position, spawnSpotRight.rotation);
-
-                //pruebas
-                //pruebaTarget = target;
-
-
-            }
+           
         }
         else
         {
@@ -155,38 +138,70 @@ public class Character : MonoBehaviour {
             Time.deltaTime * crossHairSpeed
             );
 
+        if (rightJoystickInput != Vector3.zero) {
 
-       
-        
+            characterAnimator.SetBool(s_ShotHash, true);
+
+            //disparo de ammo
+            if (Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                //spawnSpotCenter.LookAt(target);
+                AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotCenter);
+                //spawnSpotLeft.LookAt(target);
+                //spawnSpotRight.LookAt(target);
+                //AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotLeft.position, spawnSpotLeft.rotation);
+                //AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotRight.position, spawnSpotRight.rotation);
+
+                //pruebas
+                //pruebaTarget = target;
+            }
+
+            //funciona con hit
+            Ray _ray = CharacterManager.characterManagerInstance.mainCamera.ScreenPointToRay(jsPosition);
+                RaycastHit _rayHit;
+                if (Physics.Raycast(_ray, out _rayHit, distanceRaycast))
+                {
+
+                    if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
+                    {
+                        //target = _rayHit.collider.transform.position;
+                        //UIManager.uiManagerInstance.SetCrossHairColor01();
+                        //Rotacion center hacia en direccion al objeto en la mira
+                        spawnSpotCenter.LookAt(_rayHit.collider.transform);
+
+                        Vector2 viewPortPosB = CharacterManager.characterManagerInstance.mainCamera.WorldToViewportPoint(_rayHit.collider.transform.position);
+                        Vector2 screenPosB = new Vector2(
+                                ((viewPortPosB.x * UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.x) - (UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.x * 0.5f)),
+                                ((viewPortPosB.y * UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.y) - (UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.y * 0.5f)));
+                        UIManager.uiManagerInstance.rtCrossHairB.anchoredPosition = screenPosB;
+                        UIManager.uiManagerInstance.SetCrossHairBColor01();
+                        UIManager.uiManagerInstance.ShowCrossHairB(true);
+                        //print(_rayHit.collider.name);
+                    }
+                    else
+                    {
+                        spawnSpotCenter.LookAt(target);
+                        UIManager.uiManagerInstance.ShowCrossHairB(false);
+                    }
+
+                }
+                else
+                {
+                    //UIManager.uiManagerInstance.SetCrossHairColor00();
+                    //UIManager.uiManagerInstance.SetCrossHairBColor00();
+                    UIManager.uiManagerInstance.ShowCrossHairB(false);
+                    spawnSpotCenter.LookAt(target);
+                }
+           
+        }
+
         //Rotacion del modelo hacia en direccion al crossHair
         characterModel.LookAt(target);
 
-
-        //funciona con hit
-        Ray _ray = CharacterManager.characterManagerInstance.mainCamera.ScreenPointToRay(jsPosition);
-        RaycastHit _rayHit;
-        if (Physics.Raycast(_ray, out _rayHit, distanceRaycast))
-        {
-
-            if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
-            {
-                //target = _rayHit.collider.transform.position;
-                UIManager.uiManagerInstance.SetCrossHairColor01();
-                //print(_rayHit.collider.name);
-            }
-            //else if (_rayHit.collider.gameObject.CompareTag("Player"))
-            //{
-            //    UILevels.uiLevelsInstance.SetCrossHairColor02();
-            //    UILevels.uiLevelsInstance.SetCrossHairColor00();
-            //}
-
-        }
-        else
-        {
-            UIManager.uiManagerInstance.SetCrossHairColor00();
-        }
-
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
