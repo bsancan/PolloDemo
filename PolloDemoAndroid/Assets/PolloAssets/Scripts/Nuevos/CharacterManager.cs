@@ -9,6 +9,7 @@ public class CharacterManager : MonoBehaviour {
     public Camera mainCamera;                       //Camara hija que se seguira al player
     public Character character;                     //clase que controla los movimientos del player junto a colliders
     
+
     //public CharacterCollider characterCollider;
 
     public float speedZ = 6.0f;                  // Velocidad de movimiento en XY del player

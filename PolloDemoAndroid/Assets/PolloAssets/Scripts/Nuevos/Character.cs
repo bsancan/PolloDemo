@@ -20,20 +20,45 @@ public class Character : MonoBehaviour {
     private Transform spawnSpotRight;
     [SerializeField]
     private Transform spawnSpotCenter;
-
+    [Tooltip("Rango minimo del movimiento del player en X Y")]
     [SerializeField]
     private Vector2 characterRangeMin;              //Rango minimo en XY del player sobre el mundo/local
+    [Tooltip("Rango maximo del movimiento del player en X Y")]
     [SerializeField]
     private Vector2 characterRangeMax;              //Rango máximo en XY del player sobre el mundo/local
-
+    [Tooltip("Velodidad de movimiento del player")]
     [SerializeField]
     private float moveSpeed = 20f;                  // Velocidad de movimiento en XY del player
+    [Tooltip("Velodidad de rotacion del player")]
     [SerializeField]
     private float rotationSpeed = 10f;                //Velocidad de rotación del player
+    [Tooltip("Velodidad de movimiento del crossHair")]
     [SerializeField]
     private float crossHairSpeed = 3f;               //Velocidad del CrossHair para desplazarse sobre la pantalla
+    [Tooltip("Distancia del Raycast")]
+
+    public float fireRate;
+
     [SerializeField]
     private float distanceRaycast = 100f;             //Distancia para el uso del Raycast
+    [Tooltip("Energia maxima del player")]
+    [SerializeField]
+    private int playerEnergy = 100;
+    [SerializeField]
+    private float timeToConsumeEnergy = 1f;
+    [Tooltip("Escudo maximo del player")]
+    [SerializeField]
+    private int playerShield = 100;
+    [SerializeField]
+    private float timeToConsumeShield = 1f;
+    [SerializeField]
+    private int wasteEnergy = 1;
+
+
+    private IEnumerator corEnergy;
+
+    private int currentPlayerEnergy;
+    private int currentPlayerShield;
 
     //======Animaciones del player
     static int s_DeadHash = Animator.StringToHash("Dead");
@@ -45,14 +70,28 @@ public class Character : MonoBehaviour {
     private Vector3 leftJoystickInput = Vector3.zero;
     private Vector3 rightJoystickInput = Vector3.zero;
 
-    public float fireRate;
+   
     private float nextFire;
 
     //pruebas
+    [Header("variables para pruebas")]
+    public bool iniciarConsumoDeEnergia;
     private Vector3 pruebaTarget;
+
+
     void Start () {
-		
-	}
+        currentPlayerEnergy = playerEnergy;
+        currentPlayerShield = playerShield;
+
+        //asigno la corutine a una variable para poder reiniciarla cada vez que se obtenga energia
+        corEnergy = CorEnergyConsumption();
+
+        if (iniciarConsumoDeEnergia)
+        {
+            StartEnergyConsumption();
+        }
+       
+    }
 	
 
 	void Update () {
@@ -201,16 +240,87 @@ public class Character : MonoBehaviour {
 
     }
 
+    public void StartEnergyConsumption() {
+        
+        StartCoroutine(corEnergy);
+    }
 
+    private void PlayerDamage(int valueDamage)
+    {
+        //damaged = true;
+        
+        if ((currentPlayerShield - valueDamage) >= 0)
+        {
+            currentPlayerShield -= valueDamage;
+            UIManager.uiManagerInstance.txtPlayerShield.text = 
+                ((int)(currentPlayerShield * 100 / playerShield)).ToString();
+        }
+        else
+        {
+            
+            gameObject.SetActive(false);
+        }
+
+
+    }
+
+    public void PlayerGainEnergy(int valueItem)
+    {
+        StopCoroutine(corEnergy);
+
+        if ((currentPlayerEnergy + valueItem) > playerEnergy)
+        {
+            currentPlayerEnergy = playerEnergy;
+        }
+        else {
+            currentPlayerEnergy += valueItem;
+        }
+
+        UIManager.uiManagerInstance.txtPlayerEnergy.text =
+               ((int)(currentPlayerEnergy * 100 / playerEnergy)).ToString();
+
+        StartCoroutine(corEnergy);
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            //anmacion de daño
             characterAnimator.SetTrigger(s_HitHash);
+            //explosion del player
             ExplosionManager.explosionManagerInstance.SpawnPlayerExplosion(transform.position);
+            //consumo de escudo
+            PlayerDamage(other.GetComponent<Asteroid>().valueDamage);
         }
+      
     }
+
+    #region Cortinas
+
+    IEnumerator CorEnergyConsumption() {
+
+        print("cor - Inicio de consumo de energia");
+
+        while (currentPlayerEnergy > 0)
+        {
+            yield return new WaitForSeconds(timeToConsumeEnergy);
+            currentPlayerEnergy -= wasteEnergy;
+   
+            UIManager.uiManagerInstance.txtPlayerEnergy.text = 
+                ((int)(currentPlayerEnergy * 100 / playerEnergy)).ToString();
+
+
+        }
+
+        currentPlayerEnergy = 0;
+        UIManager.uiManagerInstance.txtPlayerEnergy.text = "0";
+
+    }
+
+
+    #endregion
 
     //private void OnDrawGizmos()
     //{

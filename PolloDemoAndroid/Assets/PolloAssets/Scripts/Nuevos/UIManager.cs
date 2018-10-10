@@ -28,6 +28,11 @@ public class UIManager : MonoBehaviour {
     private Color negativePoints;
     [SerializeField]
     private Color positivePoints;
+
+    public Text txtPlayerEnergy;
+
+    public Text txtPlayerShield;
+
     //[SerializeField]
     private float lifeTime = 0.45f;
 
