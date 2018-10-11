@@ -86,7 +86,8 @@ public class Asteroid : MonoBehaviour {
                 gameObject.SetActive(false);
                 UIManager.uiManagerInstance.ShowNegativePoints(damageFromPlayer, transform.position);
                 ExplosionManager.explosionManagerInstance.SpawnExplosion(transform.position);
-
+                //cuento la destruccion como puntaje
+                UIManager.uiManagerInstance.scoreManager.currentPlayerScore += valueDamage;
             }
             currentStamina = 0;
         }

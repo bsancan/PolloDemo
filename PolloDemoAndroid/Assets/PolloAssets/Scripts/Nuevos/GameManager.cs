@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManagerInstance;
+
     [SerializeField]
     private int frameRate;
 
     public GameObject playerPivot;
     public GameObject uiManager;
     public GameObject ammoManager;
+    public GameObject explosionManager;
 
     public UnityEngine.UI.Text txtFPS;
 
@@ -54,8 +57,29 @@ public class GameManager : MonoBehaviour
             go3.SetActive(true);
         }
 
+        if(ExplosionManager.explosionManagerInstance == null)
+        {
+            GameObject go4 = Instantiate(explosionManager) as GameObject;
+            go4.SetActive(true);
+        }
+
         // Make the game run as fast as possible
         Application.targetFrameRate = frameRate;
+
+        //busco el primer nivel
+
+        for(int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if(SceneManager.GetSceneAt(i).name == NameDictionary.level_01)
+            {
+                break;
+            }else
+            {
+                SceneManager.LoadScene(NameDictionary.level_01, LoadSceneMode.Additive);
+                //SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).buildIndex);
+            }
+        }
+        
 
         //inicia el movimiento hacia adelante del player
         //CharacterManager.characterManagerInstance.startMovement = true;

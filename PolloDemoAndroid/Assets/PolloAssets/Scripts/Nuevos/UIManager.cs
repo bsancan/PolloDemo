@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
 
     public static UIManager uiManagerInstance;
+
     public RectTransform rtCrossHairParent;
     public RectTransform rtCrossHair;
     public RectTransform rtCrossHairB;
@@ -33,13 +34,35 @@ public class UIManager : MonoBehaviour {
 
     public Text txtPlayerShield;
 
+    [SerializeField]
+    private GameObject goMenu;
+    [HideInInspector]
+    public PlayerMenu playerMenu;
+
+    [SerializeField]
+    private GameObject goJoyStick;
+
+    [SerializeField]
+    private GameObject goBars;
+
+    [SerializeField]
+    private GameObject goCrossHairPoints;
+
+    [SerializeField]
+    private GameObject goScoreManager;
+    [HideInInspector]
+    public ScoreManager scoreManager;
+
+    [SerializeField]
+    private GameObject goFade;
+
     //[SerializeField]
     private float lifeTime = 0.45f;
 
     private Image imgCrossHair;
     private Image imgCrossHairB;
     private GameObject goCrossHairB;
-	// Use this for initialization
+
 	void Start () {
 		if(uiManagerInstance == null)
         {
@@ -54,16 +77,51 @@ public class UIManager : MonoBehaviour {
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
 
+        DefaultConfiguration();
+    }
+	
+
+	void Update () {
+		
+	}
+
+    private void DefaultConfiguration()
+    {
         imgCrossHair = rtCrossHair.GetComponent<Image>();
         imgCrossHairB = rtCrossHairB.GetComponent<Image>();
 
         goCrossHairB = rtCrossHairB.gameObject;
+
+        //MENU
+        playerMenu = goMenu.GetComponent<PlayerMenu>();
+
+        if (!goMenu.activeInHierarchy)
+            goMenu.SetActive(true);
+        playerMenu.ShowMenuButton(true);
+        playerMenu.ShowMenuPanel(false);
+        playerMenu.ShowMenuQuestion(false);
+
+        if (!goJoyStick.activeInHierarchy)
+            goJoyStick.SetActive(true);
+
+        if (!goBars.activeInHierarchy)
+            goBars.SetActive(true);
+
+        if (!goCrossHairPoints.activeInHierarchy)
+            goCrossHairPoints.SetActive(true);
+
+        if (goScoreManager.activeInHierarchy)
+        {
+            scoreManager = goScoreManager.GetComponent<ScoreManager>();
+            scoreManager.ShowScoreList(true);
+            goScoreManager.SetActive(false);
+        }
+
+        if (goFade.activeInHierarchy)
+            goFade.SetActive(false);
+            
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void SetCrossHairColor00()
     {
@@ -115,6 +173,7 @@ public class UIManager : MonoBehaviour {
             ((viewPortPosA.y * rtPointParent.sizeDelta.y) - (rtPointParent.sizeDelta.y * 0.5f)));
 
         go.GetComponent<RectTransform>().anchoredPosition = screenPos;
+        go.SetActive(true);
 
         //asigno los valores al texto
         go.GetComponent<Points>().StartAnimation("-" + values, negativePoints, lifeTime);
@@ -132,7 +191,7 @@ public class UIManager : MonoBehaviour {
             ((viewPortPosA.y * rtPointParent.sizeDelta.y) - (rtPointParent.sizeDelta.y * 0.5f)));
 
         go.GetComponent<RectTransform>().anchoredPosition = screenPos;
-
+        go.SetActive(true);
         //asigno los valores al texto
         //asigno los valores al texto
         go.GetComponent<Points>().StartAnimation("+" + values, positivePoints, lifeTime);

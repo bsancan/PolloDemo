@@ -5,7 +5,8 @@ using UnityEngine;
 public class AsteroidGenerator : MonoBehaviour {
 
     public static AsteroidGenerator AsteroidGeneratorSingelton = null;          //instancia para el geneardor de meteoros
-    public Transform Target;
+    [SerializeField]
+    private Transform Target;
     public Vector3 Offset;
     public GameObject AsteroidPrefab = null;
     public int AsteroidPoolSize = 20;
@@ -29,7 +30,7 @@ public class AsteroidGenerator : MonoBehaviour {
         AsteroidGeneratorSingelton = this;
     }
     void Start () {
-
+        Target = CharacterManager.characterManagerInstance.character.transform;
         CreateAsteroids();
         StartCoroutine(CorStartAsteroidWave());
 	}
@@ -48,7 +49,7 @@ public class AsteroidGenerator : MonoBehaviour {
         {
             asteroidArray[i] = Instantiate(AsteroidPrefab, Vector3.zero, Quaternion.identity) as GameObject;
             Transform objTrans = asteroidArray[i].GetComponent<Transform>();
-            objTrans.parent = transform;
+            //objTrans.parent = transform;
             objTrans.gameObject.name = objTrans.gameObject.name + "_" + i;
             AsteroidQueue.Enqueue(objTrans);
             if (asteroidArray[i].activeInHierarchy)

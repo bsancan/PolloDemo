@@ -257,8 +257,10 @@ public class Character : MonoBehaviour {
         }
         else
         {
-            
+            //find del jugo
             gameObject.SetActive(false);
+            CharacterManager.characterManagerInstance.mainCamera.gameObject.SetActive(false);
+            //desactivo todo los objetos
         }
 
 
@@ -278,6 +280,8 @@ public class Character : MonoBehaviour {
 
         UIManager.uiManagerInstance.txtPlayerEnergy.text =
                ((int)(currentPlayerEnergy * 100 / playerEnergy)).ToString();
+        //sumo puntaje por la energuia recogida
+        UIManager.uiManagerInstance.scoreManager.currentPlayerScore += valueItem;
 
         StartCoroutine(corEnergy);
 
