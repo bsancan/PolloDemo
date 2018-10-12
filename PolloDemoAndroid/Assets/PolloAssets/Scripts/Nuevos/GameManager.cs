@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManagerInstance;
-
+    public int currentLevel;
+    public bool isGameOver;
     [SerializeField]
     private int frameRate;
 
@@ -35,9 +36,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         if (CharacterManager.characterManagerInstance == null)
         {
@@ -67,20 +67,22 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = frameRate;
 
         //busco el primer nivel
-
+        int level01 = 0;
         for(int i = 0; i < SceneManager.sceneCount; i++)
         {
-            if(SceneManager.GetSceneAt(i).name == NameDictionary.level_01)
+            if (SceneManager.GetSceneAt(i).name == NameDictionary.levelScene_01)
             {
-                break;
-            }else
-            {
-                SceneManager.LoadScene(NameDictionary.level_01, LoadSceneMode.Additive);
-                //SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i).buildIndex);
+                level01++;
             }
         }
-        
 
+        if(level01 == 0)
+        {
+            SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
+            print("se añadio level 01");
+        }
+
+        //currentLevel = 1;
         //inicia el movimiento hacia adelante del player
         //CharacterManager.characterManagerInstance.startMovement = true;
     }
@@ -96,5 +98,15 @@ public class GameManager : MonoBehaviour
             frameCount = 0;
             txtFPS.text = fps.ToString();
         }
+    }
+
+    public void GoToNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

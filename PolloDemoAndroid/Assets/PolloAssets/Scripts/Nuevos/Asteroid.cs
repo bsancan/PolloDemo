@@ -2,40 +2,83 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//#if UNITY_EDITOR
+//[ExecuteInEditMode]
+//#endif
 public class Asteroid : MonoBehaviour {
 
     public Transform AsteroidModel;
+    public float AsteroidModelScale = 1f;
     public int valueDamage = 20;
     public int valueStamina = 20;
     public float speedForward = 5;
     public float speedRotation = 10;
+    
     public bool enableAutoDirection;
 
     private Vector3 asteroidDirection;
     private int currentStamina;
-
-    void Start () {
-        if (enableAutoDirection) {
-            GetRandomDirection();
-        }
-       
-	}
+    //private Vector3 initialColliderScale;
+    [SerializeField]
+    Vector3 initialColliderScale;
+   
 
     private void OnEnable()
     {
-        currentStamina = valueStamina;
-    }
+        currentStamina = valueStamina * (int)AsteroidModelScale;
 
-
-    void Update () {
-        if (!enableAutoDirection) {
-            asteroidDirection = Vector3.right;
+        if (Application.isPlaying)
+        {
+            AsteroidModel.localScale = Vector3.one * AsteroidModelScale;
+            GetComponent<BoxCollider>().size = initialColliderScale * AsteroidModelScale;
+        }
+        else
+        {
+            //AsteroidModel.localScale = Vector3.one;
+            AsteroidModel.localScale = Vector3.one * AsteroidModelScale;
+            GetComponent<BoxCollider>().size = initialColliderScale * AsteroidModelScale;
         }
 
-        AsteroidModel.rotation *= Quaternion.AngleAxis(speedRotation * Time.deltaTime, asteroidDirection);
+    }
 
-        if (speedForward != 0f)
-            transform.position += transform.forward * speedForward * Time.deltaTime;
+    void Start()
+    {
+
+        if (enableAutoDirection)
+        {
+            GetRandomDirection();
+        }
+
+    }
+    private void OnDisable()
+    {
+        if (Application.isPlaying)
+        {
+            //AsteroidModel.localScale = AsteroidModel.localScale * AsteroidModelScale;
+            AsteroidModel.localScale = Vector3.one;
+        }
+        else
+        {
+            AsteroidModel.localScale = Vector3.one;
+        }
+    }
+
+    void Update () {
+
+        if (Application.isPlaying)
+        {
+            if (!enableAutoDirection)
+            {
+                asteroidDirection = Vector3.right;
+            }
+
+            AsteroidModel.rotation *= Quaternion.AngleAxis(speedRotation * Time.deltaTime, asteroidDirection);
+
+            if (speedForward != 0f)
+                transform.position += transform.forward * speedForward * Time.deltaTime;
+        }
+
+        
     }
 
     void GetRandomDirection()
@@ -85,7 +128,7 @@ public class Asteroid : MonoBehaviour {
             {
                 gameObject.SetActive(false);
                 UIManager.uiManagerInstance.ShowNegativePoints(damageFromPlayer, transform.position);
-                ExplosionManager.explosionManagerInstance.SpawnExplosion(transform.position);
+                ExplosionManager.explosionManagerInstance.SpawnExplosion(transform.position, AsteroidModelScale);
                 //cuento la destruccion como puntaje
                 UIManager.uiManagerInstance.scoreManager.currentPlayerScore += valueDamage;
             }

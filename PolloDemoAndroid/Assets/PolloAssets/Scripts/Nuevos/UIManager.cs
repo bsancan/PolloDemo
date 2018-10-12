@@ -55,6 +55,7 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject goFade;
+    private Animator animaFade;
 
     //[SerializeField]
     private float lifeTime = 0.45f;
@@ -75,7 +76,7 @@ public class UIManager : MonoBehaviour {
         }
 
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         DefaultConfiguration();
     }
@@ -110,16 +111,23 @@ public class UIManager : MonoBehaviour {
         if (!goCrossHairPoints.activeInHierarchy)
             goCrossHairPoints.SetActive(true);
 
-        if (goScoreManager.activeInHierarchy)
+        if (!goScoreManager.activeInHierarchy)
         {
-            scoreManager = goScoreManager.GetComponent<ScoreManager>();
-            scoreManager.ShowScoreList(true);
-            goScoreManager.SetActive(false);
+            goScoreManager.SetActive(true);
         }
+        scoreManager = goScoreManager.GetComponent<ScoreManager>();
+        
+        scoreManager.ShowScoreList(false);
 
-        if (goFade.activeInHierarchy)
-            goFade.SetActive(false);
-            
+        if (!goFade.activeInHierarchy)
+        {
+            goFade.SetActive(true);
+           
+        }
+        
+        animaFade = goFade.GetComponent<Animator>();
+        FadeAnimationIN();
+
 
     }
 
@@ -196,5 +204,40 @@ public class UIManager : MonoBehaviour {
         //asigno los valores al texto
         go.GetComponent<Points>().StartAnimation("+" + values, positivePoints, lifeTime);
 
+    }
+
+    public void FadeAnimationIN()
+    {
+        animaFade.SetTrigger("FadeIN");
+    }
+
+    public void FadeAnimationOUT()
+    {
+        animaFade.SetTrigger("FadeOUT");
+    }
+
+    public void ShowScoreCoreCanvas(bool b)
+    {
+        goScoreManager.SetActive(b);
+    }
+
+    public void ShowCrossHairCanvas(bool b)
+    {
+        goCrossHairPoints.SetActive(b);
+    }
+
+    public void ShowBars(bool b)
+    {
+        goBars.SetActive(b);
+    }
+
+    public void ShowJoyStickCanvas(bool b)
+    {
+        goJoyStick.SetActive(b);
+    }
+
+    public void ShowMenuCanvas(bool b)
+    {
+        goMenu.SetActive(b);
     }
 }

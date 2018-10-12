@@ -6,6 +6,14 @@ public class AsteroidExplosion : MonoBehaviour
 {
     private float lifeTime = 1f;
 
+    [HideInInspector]
+    public Vector3 initialScale;
+
+    private void Awake()
+    {
+        initialScale = transform.localScale;
+    }
+
     private void OnEnable()
     {
         CancelInvoke("AsteroidDie");

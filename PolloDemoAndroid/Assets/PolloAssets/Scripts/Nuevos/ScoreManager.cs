@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private PlayerScoreList playerScoreList;
 
+    [SerializeField]
+    private Text txtContinue;
+
     public string currentPlayerName;
     public int currentPlayerScore;
 
     void Start()
     {
-
+        PlayerPrefs.DeleteKey(NameDictionary.playerScoreListKey_lvl_01);
         //pnlScoreList.SetActive(false);
        
     }
@@ -112,8 +116,37 @@ public class ScoreManager : MonoBehaviour
             playerScores.Remove(_list[_list.Length - 1]);
 
         }
+
+        ChangeContinueButtonText();
     }
 
+    public void ChangeContinueButtonText()
+    {
+        if (CharacterManager.characterManagerInstance == null)
+            return;
+
+        if(!CharacterManager.characterManagerInstance.playerIsDead)
+        {
+            txtContinue.text = "Siguiente nivel";
+        }else if (CharacterManager.characterManagerInstance.playerIsDead)
+        {
+            txtContinue.text = "Reiniciar nivel";
+        }
+
+
+    }
+
+    public void ContinuButton()
+    {
+        if (!CharacterManager.characterManagerInstance.playerIsDead)
+        {
+            UIManager.uiManagerInstance.FadeAnimationOUT();
+        }
+        else if (CharacterManager.characterManagerInstance.playerIsDead)
+        {
+            UIManager.uiManagerInstance.FadeAnimationOUT();
+        }
+    }
    
 
 }

@@ -57,6 +57,9 @@ public class PlayerScoreList : MonoBehaviour
 
     private void OnDisable()
     {
+        if (golist == null)
+            return;
+
         foreach (GameObject g in golist)
         {
             Destroy(g);

@@ -18,6 +18,7 @@ public class ExplosionManager : MonoBehaviour
     [SerializeField]
     private int playerExplosionPoolSize = 2;
 
+
     void Start()
     {
         if(explosionManagerInstance == null)
@@ -29,7 +30,7 @@ public class ExplosionManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         CreateExplosions();
     }
@@ -58,11 +59,23 @@ public class ExplosionManager : MonoBehaviour
         }
     }
 
+    public void SpawnExplosion(Vector3 pos , float scale)
+    {
+        Transform spawnedExplosion = explosionQueue.Dequeue();
+        spawnedExplosion.gameObject.SetActive(true);
+        
+        spawnedExplosion.localScale = spawnedExplosion.GetComponent<AsteroidExplosion>().initialScale * scale;
+        spawnedExplosion.position = pos;
+
+        explosionQueue.Enqueue(spawnedExplosion);
+        print(spawnedExplosion.localScale);
+    }
+
     public void SpawnExplosion(Vector3 pos)
     {
         Transform spawnedExplosion = explosionQueue.Dequeue();
-
         spawnedExplosion.gameObject.SetActive(true);
+        spawnedExplosion.localScale = spawnedExplosion.GetComponent<AsteroidExplosion>().initialScale;
         spawnedExplosion.position = pos;
 
         explosionQueue.Enqueue(spawnedExplosion);

@@ -72,7 +72,7 @@ public class Character : MonoBehaviour {
 
    
     private float nextFire;
-
+    private float saveCurrentPlayeSpeedZ;
     //pruebas
     [Header("variables para pruebas")]
     public bool iniciarConsumoDeEnergia;
@@ -95,6 +95,9 @@ public class Character : MonoBehaviour {
 	
 
 	void Update () {
+
+        if (GameManager.gameManagerInstance.isGameOver)
+            return;
 
         leftJoystickInput = UIManager.uiManagerInstance.leftJoystick.GetInputDirection();
         rightJoystickInput = UIManager.uiManagerInstance.rightJoystick.GetInputDirection();
@@ -259,7 +262,17 @@ public class Character : MonoBehaviour {
         {
             //find del jugo
             gameObject.SetActive(false);
-            CharacterManager.characterManagerInstance.mainCamera.gameObject.SetActive(false);
+            CharacterManager.characterManagerInstance.playerIsDead = true;
+
+            UIManager.uiManagerInstance.scoreManager.ShowScoreList(true);
+            UIManager.uiManagerInstance.ShowCrossHairCanvas(false);
+            UIManager.uiManagerInstance.ShowJoyStickCanvas(false);
+            UIManager.uiManagerInstance.ShowBars(false);
+            UIManager.uiManagerInstance.ShowMenuCanvas(false);
+            //detengo el movimiento en z del player
+            CharacterManager.characterManagerInstance.speedZ = 0f;
+
+            //UIManager.uiManagerInstance.FadeAnimationOUT();
             //desactivo todo los objetos
         }
 
@@ -298,6 +311,26 @@ public class Character : MonoBehaviour {
             //consumo de escudo
             PlayerDamage(other.GetComponent<Asteroid>().valueDamage);
         }
+
+        if(other.gameObject.name == "Level01_END")
+        {
+            StopCoroutine(corEnergy);
+            //FIN DEL NIVEL
+            if (!CharacterManager.characterManagerInstance.playerIsDead)
+            {
+                UIManager.uiManagerInstance.scoreManager.ShowScoreList(true);
+                UIManager.uiManagerInstance.ShowCrossHairCanvas(false);
+                UIManager.uiManagerInstance.ShowJoyStickCanvas(false);
+                UIManager.uiManagerInstance.ShowBars(false);
+                UIManager.uiManagerInstance.ShowMenuCanvas(false);
+
+                //detengo el movimiento en z del player
+                saveCurrentPlayeSpeedZ = CharacterManager.characterManagerInstance.speedZ;
+                CharacterManager.characterManagerInstance.speedZ = 0f;
+                GameManager.gameManagerInstance.isGameOver = true;
+                characterAnimator.SetBool(s_ShotHash, false);
+            }
+        }
       
     }
 
@@ -321,9 +354,22 @@ public class Character : MonoBehaviour {
         currentPlayerEnergy = 0;
         UIManager.uiManagerInstance.txtPlayerEnergy.text = "0";
 
+        //fin del juego
+        gameObject.SetActive(false);
+        CharacterManager.characterManagerInstance.playerIsDead = true;
+
+        UIManager.uiManagerInstance.scoreManager.ShowScoreList(true);
+        UIManager.uiManagerInstance.ShowCrossHairCanvas(false);
+        UIManager.uiManagerInstance.ShowJoyStickCanvas(false);
+        UIManager.uiManagerInstance.ShowBars(false);
+        UIManager.uiManagerInstance.ShowMenuCanvas(false);
+        //detengo el movimiento en z del player
+        CharacterManager.characterManagerInstance.speedZ = 0f;
+        //UIManager.uiManagerInstance.FadeAnimationOUT();
     }
 
 
+   
     #endregion
 
     //private void OnDrawGizmos()

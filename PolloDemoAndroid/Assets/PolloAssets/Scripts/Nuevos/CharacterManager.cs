@@ -8,7 +8,7 @@ public class CharacterManager : MonoBehaviour {
     public static CharacterManager characterManagerInstance;
     public Camera mainCamera;                       //Camara hija que se seguira al player
     public Character character;                     //clase que controla los movimientos del player junto a colliders
-    
+    public bool playerIsDead;
 
     //public CharacterCollider characterCollider;
 
@@ -39,7 +39,7 @@ public class CharacterManager : MonoBehaviour {
         }
 
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
 
 
     }
