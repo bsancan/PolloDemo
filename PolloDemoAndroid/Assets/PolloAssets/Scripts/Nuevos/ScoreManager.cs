@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteKey(NameDictionary.playerScoreListKey_lvl_01);
+        //PlayerPrefs.DeleteKey(NameDictionary.playerScoreListKey_lvl_01);
         //pnlScoreList.SetActive(false);
        
     }
@@ -103,9 +103,11 @@ public class ScoreManager : MonoBehaviour
     public void UpdatePlayerScoreList()
     {
         Init();
-        if(GetScore(currentPlayerName) > 0)
+        int lastScore = GetScore(currentPlayerName);
+
+        if ((lastScore > 0) && (currentPlayerScore > lastScore))
         {
-            ChangeScore(currentPlayerName, currentPlayerScore);
+                ChangeScore(currentPlayerName, currentPlayerScore);
 
         }
         else
@@ -113,8 +115,11 @@ public class ScoreManager : MonoBehaviour
             SetScore(currentPlayerName, currentPlayerScore);
             string[] _list = playerScores.Keys.OrderByDescending(n => GetScore(n)).ToArray();
 
-            playerScores.Remove(_list[_list.Length - 1]);
-
+            for (int i = 0; i < _list.Length; i++) {
+                if (i > 9) {
+                    playerScores.Remove(_list[i]);
+                }
+            }
         }
 
         ChangeContinueButtonText();

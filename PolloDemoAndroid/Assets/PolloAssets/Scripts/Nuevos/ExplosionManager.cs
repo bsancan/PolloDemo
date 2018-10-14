@@ -68,7 +68,7 @@ public class ExplosionManager : MonoBehaviour
         spawnedExplosion.position = pos;
 
         explosionQueue.Enqueue(spawnedExplosion);
-        print(spawnedExplosion.localScale);
+        //print(spawnedExplosion.localScale);
     }
 
     public void SpawnExplosion(Vector3 pos)

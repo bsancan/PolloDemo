@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//#if UNITY_EDITOR
-//[ExecuteInEditMode]
-//#endif
+#if UNITY_EDITOR
+[ExecuteInEditMode]
+#endif
 public class Asteroid : MonoBehaviour {
 
     public Transform AsteroidModel;
@@ -20,24 +20,27 @@ public class Asteroid : MonoBehaviour {
     private int currentStamina;
     //private Vector3 initialColliderScale;
     [SerializeField]
-    Vector3 initialColliderScale;
-   
+    private Vector3 initialColliderScale;
+
+    //private Vector3 firstAsteroidModelScale;
+    //private Vector3 firstBoxColliderScale;
+
+
+    private void Awake()
+    {
+        //if (firstAsteroidModelScale == null)
+        //    firstAsteroidModelScale = AsteroidModel.localScale;
+
+        //if (firstBoxColliderScale == null)
+        //    firstBoxColliderScale = GetComponent<BoxCollider>().size;
+    }
 
     private void OnEnable()
     {
         currentStamina = valueStamina * (int)AsteroidModelScale;
 
-        if (Application.isPlaying)
-        {
-            AsteroidModel.localScale = Vector3.one * AsteroidModelScale;
-            GetComponent<BoxCollider>().size = initialColliderScale * AsteroidModelScale;
-        }
-        else
-        {
-            //AsteroidModel.localScale = Vector3.one;
-            AsteroidModel.localScale = Vector3.one * AsteroidModelScale;
-            GetComponent<BoxCollider>().size = initialColliderScale * AsteroidModelScale;
-        }
+        AsteroidModel.localScale = Vector3.one * AsteroidModelScale;
+        GetComponent<BoxCollider>().size = initialColliderScale * AsteroidModelScale;
 
     }
 
@@ -52,15 +55,8 @@ public class Asteroid : MonoBehaviour {
     }
     private void OnDisable()
     {
-        if (Application.isPlaying)
-        {
-            //AsteroidModel.localScale = AsteroidModel.localScale * AsteroidModelScale;
-            AsteroidModel.localScale = Vector3.one;
-        }
-        else
-        {
-            AsteroidModel.localScale = Vector3.one;
-        }
+        AsteroidModel.localScale = Vector3.one;
+        GetComponent<BoxCollider>().size = initialColliderScale;
     }
 
     void Update () {

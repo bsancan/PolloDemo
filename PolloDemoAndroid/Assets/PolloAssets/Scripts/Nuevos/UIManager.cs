@@ -181,6 +181,7 @@ public class UIManager : MonoBehaviour {
             ((viewPortPosA.y * rtPointParent.sizeDelta.y) - (rtPointParent.sizeDelta.y * 0.5f)));
 
         go.GetComponent<RectTransform>().anchoredPosition = screenPos;
+        go.transform.localScale = Vector3.one;
         go.SetActive(true);
 
         //asigno los valores al texto
@@ -199,6 +200,7 @@ public class UIManager : MonoBehaviour {
             ((viewPortPosA.y * rtPointParent.sizeDelta.y) - (rtPointParent.sizeDelta.y * 0.5f)));
 
         go.GetComponent<RectTransform>().anchoredPosition = screenPos;
+        go.transform.localScale = Vector3.one;
         go.SetActive(true);
         //asigno los valores al texto
         //asigno los valores al texto

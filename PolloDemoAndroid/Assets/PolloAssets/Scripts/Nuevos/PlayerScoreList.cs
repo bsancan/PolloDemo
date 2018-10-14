@@ -49,7 +49,10 @@ public class PlayerScoreList : MonoBehaviour
             rank++;
             GameObject go = (GameObject)Instantiate(playerScoreEntryPrefab);
             go.transform.SetParent(this.transform);
+            //go.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            go.transform.localScale = Vector3.one;
             go.GetComponent<PlayerScoreEntry>().SetPlayerScoreData(rank, name, scoreManager.GetScore(name));
+            go.SetActive(true);
             golist.Add(go);
         }
 
