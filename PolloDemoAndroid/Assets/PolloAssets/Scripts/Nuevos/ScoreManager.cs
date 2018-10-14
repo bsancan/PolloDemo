@@ -11,6 +11,9 @@ public class ScoreManager : MonoBehaviour
     private GameObject pnlScoreList;
     [SerializeField]
     private PlayerScoreList playerScoreList;
+    
+    [SerializeField]
+    private Text txtCurrentScore;
 
     [SerializeField]
     private Text txtContinue;
@@ -105,24 +108,33 @@ public class ScoreManager : MonoBehaviour
         Init();
         int lastScore = GetScore(currentPlayerName);
 
-        if ((lastScore > 0) && (currentPlayerScore > lastScore))
-        {
+
+        if (lastScore > 0) {
+            //si es mayor a cero el nombre del player existe
+            if (currentPlayerScore > lastScore)
+            {
+                //actualizo el puntaje del jugador
                 ChangeScore(currentPlayerName, currentPlayerScore);
-
+            }
         }
-        else
-        {
+        else if (lastScore == 0){
+            //el nombre del player no existe
             SetScore(currentPlayerName, currentPlayerScore);
-            string[] _list = playerScores.Keys.OrderByDescending(n => GetScore(n)).ToArray();
+        }
 
-            for (int i = 0; i < _list.Length; i++) {
-                if (i > 9) {
-                    playerScores.Remove(_list[i]);
-                }
+        string[] _list = playerScores.Keys.OrderByDescending(n => GetScore(n)).ToArray();
+
+        for (int i = 0; i < _list.Length; i++)
+        {
+            if (i > 9)
+            {
+                playerScores.Remove(_list[i]);
             }
         }
 
         ChangeContinueButtonText();
+
+        txtCurrentScore.text = currentPlayerScore.ToString();
     }
 
     public void ChangeContinueButtonText()
@@ -153,5 +165,6 @@ public class ScoreManager : MonoBehaviour
         }
     }
    
+
 
 }
