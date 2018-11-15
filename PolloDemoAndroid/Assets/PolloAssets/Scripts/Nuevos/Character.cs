@@ -216,9 +216,9 @@ public class Character : MonoBehaviour {
                         Vector2 screenPosB = new Vector2(
                                 ((viewPortPosB.x * UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.x) - (UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.x * 0.5f)),
                                 ((viewPortPosB.y * UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.y) - (UIManager.uiManagerInstance.rtCrossHairParent.sizeDelta.y * 0.5f)));
-                        UIManager.uiManagerInstance.rtCrossHairB.anchoredPosition = screenPosB;
-                        UIManager.uiManagerInstance.SetCrossHairBColor01();
-                        UIManager.uiManagerInstance.ShowCrossHairB(true);
+                       //UIManager.uiManagerInstance.rtCrossHairB.anchoredPosition = screenPosB;
+                        //UIManager.uiManagerInstance.SetCrossHairBColor01();
+                        //UIManager.uiManagerInstance.ShowCrossHairB(true);
                         //print(_rayHit.collider.name);
                     }
                     else
