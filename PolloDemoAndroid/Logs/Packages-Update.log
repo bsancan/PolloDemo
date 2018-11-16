@@ -26,3 +26,11 @@ Update Mode: updateDependencies
 
 The following packages were updated:
   com.unity.package-manager-ui from version 2.0.0-preview.7 to 2.0.1
+
+=== Thu Nov 15 17:56:33 2018
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.package-manager-ui from version 2.0.1 to 2.0.3
