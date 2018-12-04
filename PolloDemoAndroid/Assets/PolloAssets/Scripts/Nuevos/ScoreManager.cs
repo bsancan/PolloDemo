@@ -30,6 +30,12 @@ public class ScoreManager : MonoBehaviour
 
     public void ShowScoreList(bool b) {
         pnlScoreList.SetActive(b);
+
+        //UIManager.uiManagerInstance.scoreManager.ShowScoreList(true);
+        UIManager.uiManagerInstance.ShowCrossHairCanvas(!b);
+        UIManager.uiManagerInstance.ShowJoyStickCanvas(!b);
+        UIManager.uiManagerInstance.ShowBars(!b);
+        UIManager.uiManagerInstance.ShowMenuCanvas(!b);
     }
 
     void Init() {

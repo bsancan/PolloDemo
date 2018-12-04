@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     float fps = 0.0f;
     float updateRate = 4.0f;  // 4 updates per sec.
 
-    private Quaternion initialRotation;
-    private Level02 level02;
+    //private Quaternion initialRotation;
+    //private Level02 level02;
     //private Transform tunnel;
 
     //private GameObject _playerPivot;
@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if(gameManagerInstance == null)
+        if (gameManagerInstance == null)
         {
             gameManagerInstance = this;
-        }else
+        } else
         {
             Destroy(gameObject);
         }
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
             go3.SetActive(true);
         }
 
-        if(ExplosionManager.explosionManagerInstance == null)
+        if (ExplosionManager.explosionManagerInstance == null)
         {
             GameObject go4 = Instantiate(explosionManager) as GameObject;
             go4.SetActive(true);
@@ -71,18 +71,8 @@ public class GameManager : MonoBehaviour
 
         // Make the game run as fast as possible
         Application.targetFrameRate = frameRate;
-        if (!developMode) {
-            if (currentLevel == 1) {
-                SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
-            }
-            else if (currentLevel == 2)
-            {
-                SceneManager.LoadScene(NameDictionary.levelScene_02, LoadSceneMode.Additive);
-                level02 = GameObject.FindObjectOfType<Level02>();
-                initialRotation = Quaternion.Euler(0, 90.05801f, 0);
-                transform.position = level02.tunnel.position;
-            }
-        }
+
+        StartCoroutine(CorFirstInitial());
 
         //busco el primer nivel
         //int level01 = 0;
@@ -118,13 +108,58 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetInitialLevelValues() {
+        if (!developMode)
+        {
+            if (currentLevel == 1)
+            {
+                SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
+                CharacterManager.characterManagerInstance.character.SetInitialValues();
+                CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
+                CharacterManager.characterManagerInstance.startMovement = true;
+            }
+            else if (currentLevel == 2)
+            {
+                SceneManager.LoadScene(NameDictionary.levelScene_02, LoadSceneMode.Additive);
+                CharacterManager.characterManagerInstance.character.SetInitialValues();
+                //CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
+                CharacterManager.characterManagerInstance.startMovement = false;
+                CharacterManager.characterManagerInstance.SetInitialTunnelValues();
+
+            }
+        }
+    }
+
     public void GoToNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(CorNextLevel());
     }
 
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator CorFirstInitial() {
+        yield return null;
+
+        while (CharacterManager.characterManagerInstance == null) {
+            yield return null;
+        }
+
+        SetInitialLevelValues();
+
+    }
+
+    IEnumerator CorNextLevel() {
+        //UIManager.uiManagerInstance.FadeAnimationOUT();
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.UnloadSceneAsync(currentLevel);
+        UIManager.uiManagerInstance.scoreManager.ShowScoreList(false);
+        currentLevel = 2;
+        SetInitialLevelValues();
+        yield return new WaitForSeconds(0.5f);
+        UIManager.uiManagerInstance.FadeAnimationIN();
     }
 }

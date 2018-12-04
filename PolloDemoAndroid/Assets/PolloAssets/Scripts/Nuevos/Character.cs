@@ -74,36 +74,43 @@ public class Character : MonoBehaviour {
     private float nextFire;
     private float saveCurrentPlayeSpeedZ;
     //pruebas
-    [Header("variables para pruebas")]
-    public bool iniciarConsumoDeEnergia;
-    private Vector3 pruebaTarget;
+    //[Header("variables para pruebas")]
+    //public bool iniciarConsumoDeEnergia;
+    //private Vector3 pruebaTarget;
 
 
     void Start () {
-        currentPlayerEnergy = playerEnergy;
-        currentPlayerShield = playerShield;
+      
 
-        //asigno la corutine a una variable para poder reiniciarla cada vez que se obtenga energia
-        corEnergy = CorEnergyConsumption();
+  
 
-        if (iniciarConsumoDeEnergia)
-        {
-            StartEnergyConsumption();
-        }
+        //if (iniciarConsumoDeEnergia)
+        //{
+        //    StartEnergyConsumption();
+        //}
        
     }
 	
 
 	void Update () {
 
-        if (GameManager.gameManagerInstance.isGameOver)
-            return;
+        //if (GameManager.gameManagerInstance.isGameOver)
+        //    return;
 
         leftJoystickInput = UIManager.uiManagerInstance.leftJoystick.GetInputDirection();
         rightJoystickInput = UIManager.uiManagerInstance.rightJoystick.GetInputDirection();
 
         MovingCharacterXY();
         MovingCrosshair();
+    }
+
+    public void SetInitialValues() {
+        currentPlayerEnergy = playerEnergy;
+        currentPlayerShield = playerShield;
+
+        //asigno la corutine a una variable para poder reiniciarla cada vez que se obtenga energia
+        corEnergy = CorEnergyConsumption();
+
     }
 
     private void MovingCharacterXY()
@@ -137,26 +144,7 @@ public class Character : MonoBehaviour {
             newRot, Time.deltaTime * rotationSpeed);
     }
 
-    private void MovingCharacterOnTunnel()
-    {
-
-        Quaternion newRot = Quaternion.Euler(traPath.rotation.eulerAngles - initialRotation.eulerAngles);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, rotSpeed * Time.deltaTime);
-
-        //Diferente de AXIS 
-        if (xAxis != 0f && yAxis != 0f)
-        {
-            //xy = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
-            //r = transform.right * xAxis * distanceX;
-            Vector3 xy0 = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
-            //xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
-            xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
-        }
-
-        Vector3 fixedPosition = traPath.position + xy;
-        transform.position = fixedPosition;
-
-    }
+  
 
     private void MovingCrosshair()
     {
@@ -339,16 +327,16 @@ public class Character : MonoBehaviour {
             if (!CharacterManager.characterManagerInstance.playerIsDead)
             {
                 UIManager.uiManagerInstance.scoreManager.ShowScoreList(true);
-                UIManager.uiManagerInstance.ShowCrossHairCanvas(false);
-                UIManager.uiManagerInstance.ShowJoyStickCanvas(false);
-                UIManager.uiManagerInstance.ShowBars(false);
-                UIManager.uiManagerInstance.ShowMenuCanvas(false);
+                //UIManager.uiManagerInstance.ShowCrossHairCanvas(false);
+                //UIManager.uiManagerInstance.ShowJoyStickCanvas(false);
+                //UIManager.uiManagerInstance.ShowBars(false);
+                //UIManager.uiManagerInstance.ShowMenuCanvas(false);
 
                 //detengo el movimiento en z del player
                 saveCurrentPlayeSpeedZ = CharacterManager.characterManagerInstance.speedZ;
                 CharacterManager.characterManagerInstance.speedZ = 0f;
                 GameManager.gameManagerInstance.isGameOver = true;
-                characterAnimator.SetBool(s_ShotHash, false);
+                //characterAnimator.SetBool(s_ShotHash, false);
             }
         }
       
