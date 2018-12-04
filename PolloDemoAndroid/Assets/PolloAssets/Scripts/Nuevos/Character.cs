@@ -137,6 +137,26 @@ public class Character : MonoBehaviour {
             newRot, Time.deltaTime * rotationSpeed);
     }
 
+    private void MovingCharacterOnTunnel()
+    {
+
+        Quaternion newRot = Quaternion.Euler(traPath.rotation.eulerAngles - initialRotation.eulerAngles);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, rotSpeed * Time.deltaTime);
+
+        //Diferente de AXIS 
+        if (xAxis != 0f && yAxis != 0f)
+        {
+            //xy = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
+            //r = transform.right * xAxis * distanceX;
+            Vector3 xy0 = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
+            //xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
+            xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
+        }
+
+        Vector3 fixedPosition = traPath.position + xy;
+        transform.position = fixedPosition;
+
+    }
 
     private void MovingCrosshair()
     {

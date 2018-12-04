@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManagerInstance;
     public int currentLevel;
+    [SerializeField]
+    private bool developMode;
     public bool isGameOver;
     [SerializeField]
     private int frameRate;
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
     float nextUpdate = 0.0f;
     float fps = 0.0f;
     float updateRate = 4.0f;  // 4 updates per sec.
+
+    private Quaternion initialRotation;
+    private Level02 level02;
+    //private Transform tunnel;
 
     //private GameObject _playerPivot;
     //private GameObject _uiManager;
@@ -65,22 +71,34 @@ public class GameManager : MonoBehaviour
 
         // Make the game run as fast as possible
         Application.targetFrameRate = frameRate;
-
-        //busco el primer nivel
-        int level01 = 0;
-        for(int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            if (SceneManager.GetSceneAt(i).name == NameDictionary.levelScene_01)
+        if (!developMode) {
+            if (currentLevel == 1) {
+                SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
+            }
+            else if (currentLevel == 2)
             {
-                level01++;
+                SceneManager.LoadScene(NameDictionary.levelScene_02, LoadSceneMode.Additive);
+                level02 = GameObject.FindObjectOfType<Level02>();
+                initialRotation = Quaternion.Euler(0, 90.05801f, 0);
+                transform.position = level02.tunnel.position;
             }
         }
 
-        if(level01 == 0)
-        {
-            SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
-            print("se añadio level 01");
-        }
+        //busco el primer nivel
+        //int level01 = 0;
+        //for(int i = 0; i < SceneManager.sceneCount; i++)
+        //{
+        //    if (SceneManager.GetSceneAt(i).name == NameDictionary.levelScene_01)
+        //    {
+        //        level01++;
+        //    }
+        //}
+
+        //if(level01 == 0)
+        //{
+        //    SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
+        //    print("se añadio level 01");
+        //}
 
         //currentLevel = 1;
         //inicia el movimiento hacia adelante del player

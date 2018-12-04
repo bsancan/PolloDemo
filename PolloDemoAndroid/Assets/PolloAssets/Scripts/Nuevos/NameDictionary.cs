@@ -10,6 +10,8 @@ public class NameDictionary : MonoBehaviour
 
     public const string levelScene_01 = "Level01";
 
+    public const string levelScene_02 = "Level02";
+
     //saves and loads
     public const string playerScoreListKey_lvl_01 = "slPlayerScoreListKey_lvl_01";
 }
