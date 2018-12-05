@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int frameRate;
 
+    public GameObject virtualCam1;
+    public GameObject virtualCam2;
+
     public GameObject playerPivot;
     public GameObject uiManager;
     public GameObject ammoManager;
@@ -113,6 +116,8 @@ public class GameManager : MonoBehaviour
         {
             if (currentLevel == 1)
             {
+                virtualCam1.SetActive(true);
+                virtualCam2.SetActive(false);
                 SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
                 CharacterManager.characterManagerInstance.character.SetInitialValues();
                 CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
@@ -120,11 +125,36 @@ public class GameManager : MonoBehaviour
             }
             else if (currentLevel == 2)
             {
+                virtualCam1.SetActive(false);
+                virtualCam2.SetActive(true);
                 SceneManager.LoadScene(NameDictionary.levelScene_02, LoadSceneMode.Additive);
                 CharacterManager.characterManagerInstance.character.SetInitialValues();
                 //CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
                 CharacterManager.characterManagerInstance.startMovement = false;
-                CharacterManager.characterManagerInstance.SetInitialTunnelValues();
+                //CharacterManager.characterManagerInstance.SetInitialTunnelValues();
+
+            }
+        }
+        else
+        {
+            if (currentLevel == 1)
+            {
+                virtualCam1.SetActive(true);
+                virtualCam2.SetActive(false);
+                //SceneManager.LoadScene(NameDictionary.levelScene_01, LoadSceneMode.Additive);
+                CharacterManager.characterManagerInstance.character.SetInitialValues();
+                CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
+                CharacterManager.characterManagerInstance.startMovement = true;
+            }
+            else if (currentLevel == 2)
+            {
+                virtualCam1.SetActive(false);
+                virtualCam2.SetActive(true);
+                //SceneManager.LoadScene(NameDictionary.levelScene_02, LoadSceneMode.Additive);
+                CharacterManager.characterManagerInstance.character.SetInitialValues();
+                //CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
+                CharacterManager.characterManagerInstance.startMovement = false;
+                //CharacterManager.characterManagerInstance.SetInitialTunnelValues();
 
             }
         }

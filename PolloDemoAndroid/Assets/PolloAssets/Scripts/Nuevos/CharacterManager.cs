@@ -19,13 +19,12 @@ public class CharacterManager : MonoBehaviour {
     public bool startMovement = false;
 
     private Level02 level02;                        //variale que se busca en el 2do nivel
-    private Quaternion initialRotationForTunnel;             //Rotacion para seguir la animacion del tunel
-    private bool startTunnelAnimation;                          //el player comienza a seguir el camino del animacion
-    private float speedRotationForTunnel;                       //velocidad para suavizar la rotacion de la animacion del tunel 
+    //private Quaternion initialRotationForTunnel;             //Rotacion para seguir la animacion del tunel
+
 
     void Awake()
     {
-        startTunnelAnimation = false;
+        //startTunnelAnimation = false;
     }
 
 
@@ -57,52 +56,59 @@ public class CharacterManager : MonoBehaviour {
         {
             transform.position += transform.forward * Time.deltaTime * speedZ;
         }
-        else if (GameManager.gameManagerInstance.currentLevel == 2 && !startMovement && startTunnelAnimation)
-        {
-            MovingCharacterOnTunnel();
-        }
-    }
-
-    public void SetInitialTunnelValues() {
-        level02 = GameObject.FindObjectOfType<Level02>();
-        initialRotationForTunnel = Quaternion.Euler(0, 90.05801f, 0);
-       
-        character.transform.position = Vector3.zero;
-        StartCoroutine(CorStartTunnelAnimation());
-      
-    }
-
-    private void MovingCharacterOnTunnel()
-    {
-
-        Quaternion newRot = Quaternion.Euler(level02.tunnel.rotation.eulerAngles - initialRotationForTunnel.eulerAngles);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, speedRotationForTunnel * Time.deltaTime);
-
-        ////Diferente de AXIS 
-        //if (xAxis != 0f && yAxis != 0f)
+        //else if (GameManager.gameManagerInstance.currentLevel == 2 && !startMovement && startTunnelAnimation)
         //{
-        //    //xy = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
-        //    //r = transform.right * xAxis * distanceX;
-        //    Vector3 xy0 = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
-        //    //xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
-        //    xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
+        //    MovingCharacterOnTunnel();
         //}
-
-        //Vector3 fixedPosition = traPath.position + xy;
-        transform.position = level02.tunnel.position;
-
     }
 
+    //public void SetInitialTunnelValues() {
+        
+    //    StartCoroutine(CorStartTunnelAnimation());
+      
+    //}
 
-    IEnumerator CorStartTunnelAnimation() {
-        yield return null;
+    //private void MovingCharacterOnTunnel()
+    //{
 
-        while (level02 == null) {
-            yield return null;
-        }
-        transform.position = level02.tunnel.position;
-        startTunnelAnimation = true;
-    }
+    //    Quaternion newRot = Quaternion.Euler(level02.tunnel.rotation.eulerAngles - initialRotationForTunnel.eulerAngles);
+    //    transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, speedRotationForTunnel * Time.deltaTime);
+
+    //    ////Diferente de AXIS 
+    //    //if (xAxis != 0f && yAxis != 0f)
+    //    //{
+    //    //    //xy = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
+    //    //    //r = transform.right * xAxis * distanceX;
+    //    //    Vector3 xy0 = (transform.right * xAxis * distanceX) + (transform.up * yAxis * distanceY);
+    //    //    //xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
+    //    //    xy = Vector3.Lerp(xy, xy0, playerSpeedB * Time.deltaTime);
+    //    //}
+
+    //    //Vector3 fixedPosition = traPath.position + xy;
+    //    transform.position = level02.tunnel.position;
+    //    Quaternion newRot2 = Quaternion.Euler(character.transform.localRotation.eulerAngles + transform.rotation.eulerAngles);
+    //    character.transform.localRotation = newRot2;
+
+    //}
+
+
+    //IEnumerator CorStartTunnelAnimation() {
+    //    yield return null;
+
+    //    while (level02 == null) {
+    //        level02 = GameObject.FindObjectOfType<Level02>();
+       
+    //        yield return null;
+    //    }
+    //    initialRotationForTunnel = Quaternion.Euler(0, 90.05801f, 0);
+    //    //print(transform.position);
+    //    //transform.position = Vector3.zero;
+    //    //character.transform.localPosition = Vector3.zero;
+    //    level02.PlayTunnelAnimation();
+    //    //startTunnelAnimation = true;
+
+    //    //print(transform.position);
+    //}
 
 }
 
