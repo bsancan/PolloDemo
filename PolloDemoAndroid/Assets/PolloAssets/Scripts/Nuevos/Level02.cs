@@ -13,13 +13,15 @@ public class Level02 : MonoBehaviour
     private float speedRotationForTunnel = 20f;                       //velocidad para suavizar la rotacion de la animacion del tunel 
     private Quaternion initialRotationForTunnel;             //Rotacion para seguir la animacion del tunel
 
+
+    private void Awake()
+    {
+        startTunnelAnimation = false;
+        tunnelAnimation = tunnel.GetComponent<Animation>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        //tunnelAnimator = tunnel.GetComponent<Animator>();
-        tunnelAnimation = tunnel.GetComponent<Animation>();
-        startTunnelAnimation = false;
-
         SetInitialTunnelValues();
     }
 
@@ -31,13 +33,6 @@ public class Level02 : MonoBehaviour
             MovingCharacterOnTunnel();
         }
     }
-
-    //public void PlayTunnelAnimation()
-    //{
-    //    startTunnelAnimation = true;
-    //    tunnelAnimation.Play("Anm_ne_esc");
-    //}
-
     private void MovingCharacterOnTunnel()
     {
 
@@ -66,8 +61,8 @@ public class Level02 : MonoBehaviour
 
         initialRotationForTunnel = Quaternion.Euler(0, 90.05801f, 0);
         startTunnelAnimation = true;
-        tunnelAnimation.Play("Anm_ne_esc");
-        //PlayTunnelAnimation();
+        //tunnelAnimation.Play("Anm_ne_esc");
+
 
     }
 

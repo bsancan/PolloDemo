@@ -7,6 +7,16 @@ public class Boundary : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.SetActive(false);
+        if (other.CompareTag("EnemySpaceShip"))
+        {
+            other.transform.parent.gameObject.SetActive(false);
+
+        }else
+        {
+            other.gameObject.SetActive(false);
+        }
+
+
+
     }
 }

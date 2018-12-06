@@ -462,9 +462,7 @@ public class Character : MonoBehaviour {
             ExplosionManager.explosionManagerInstance.SpawnPlayerExplosion(transform.position);
             //consumo de escudo
             PlayerDamage(other.GetComponent<Asteroid>().valueDamage);
-        }
-
-        if(other.gameObject.name == "Level01_END")
+        } else if(other.gameObject.name == "Level01_END")
         {
             StopCoroutine(corEnergy);
             //FIN DEL NIVEL
@@ -482,8 +480,16 @@ public class Character : MonoBehaviour {
                 GameManager.gameManagerInstance.isGameOver = true;
                 //characterAnimator.SetBool(s_ShotHash, false);
             }
+        } else if (other.gameObject.CompareTag("EnemyAmmo"))
+        {
+            //anmacion de daño
+            characterAnimator.SetTrigger(s_HitHash);
+            //explosion del player
+            ExplosionManager.explosionManagerInstance.SpawnPlayerExplosion(transform.position);
+            PlayerDamage(other.GetComponent<EnemyAmmo>().valueDamage);
         }
-      
+
+
     }
 
     #region Cortinas

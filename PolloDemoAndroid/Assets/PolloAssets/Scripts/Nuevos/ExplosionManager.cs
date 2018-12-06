@@ -81,6 +81,17 @@ public class ExplosionManager : MonoBehaviour
         explosionQueue.Enqueue(spawnedExplosion);
     }
 
+    public void SpawnSpaceShipExplosion(Vector3 pos)
+    {
+        Transform spawnedExplosion = explosionQueue.Dequeue();
+        spawnedExplosion.gameObject.SetActive(true);
+        spawnedExplosion.localScale = Vector3.one;
+        //spawnedExplosion.localScale = spawnedExplosion.GetComponent<AsteroidExplosion>().initialScale;
+        spawnedExplosion.position = pos;
+
+        explosionQueue.Enqueue(spawnedExplosion);
+    }
+
     public void SpawnPlayerExplosion(Vector3 pos)
     {
         Transform spawnedExplosion = playerExplosionQueue.Dequeue();
