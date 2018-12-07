@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
                 //CharacterManager.characterManagerInstance.character.StartEnergyConsumption();
                 CharacterManager.characterManagerInstance.startMovement = false;
                 AmmoManager.ammoManagerInstance.CreateEnemyAmmo();
+                AmmoManager.ammoManagerInstance.CreateEnemyAmmoSphere();
                 //CharacterManager.characterManagerInstance.SetInitialTunnelValues();
 
             }

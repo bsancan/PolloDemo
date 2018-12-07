@@ -34,7 +34,8 @@ public class PlayerAmmo : MonoBehaviour {
         if (other.gameObject.CompareTag("Enemy"))
         {
             gameObject.SetActive(false);
-            
+
         }
+  
     }
 }

@@ -7,21 +7,23 @@ public class AmmoManager : MonoBehaviour {
 
     public GameObject playerAmmoPrefab = null;
     public GameObject enemyAmmoPrefab = null;
+    public GameObject enemyAmmoSpherePrefab = null;
 
     public float playerAmmoSpeed = 60f;
     public float playerAmmoLifeTime = 1f;
 
-    public float enemyAmmoSpeed = 4f;
-    public float enemyAmmoLifeTime = 1f;
+    //public float enemyAmmoSpeed = 4f;
+    //public float enemyAmmoLifeTime = 1f;
 
     public int playerAmmoPoolSize = 20;
     public int enemyAmmoPoolSize = 20;
-
+    public int enemyAmmoSpherePoolSize = 20;
     //private GameObject[] playerAmmoArray;
     //private GameObject[] enemyAmmoArray;
 
     public Queue<Transform> playerAmmoQueue = new Queue<Transform>();
     public Queue<Transform> enemyAmmoQueue = new Queue<Transform>();
+    public Queue<Transform> enemyAmmoSphereQueue = new Queue<Transform>();
 
     void Start () {
 
@@ -82,6 +84,20 @@ public class AmmoManager : MonoBehaviour {
         }
     }
 
+    public void CreateEnemyAmmoSphere()
+    {
+
+        for (int i = 0; i < enemyAmmoSpherePoolSize; i++)
+        {
+            GameObject go = Instantiate(enemyAmmoSpherePrefab, Vector3.zero, Quaternion.identity) as GameObject;
+            Transform objTrans = go.transform;
+            objTrans.parent = transform;
+            objTrans.gameObject.name = objTrans.gameObject.name + "_" + i;
+            enemyAmmoSphereQueue.Enqueue(objTrans);
+            go.SetActive(false);
+        }
+    }
+
     public Transform SpawnAmmo(Transform playerAmmo)
     {
         Transform spawnedAmmo = playerAmmoQueue.Dequeue();
@@ -102,17 +118,34 @@ public class AmmoManager : MonoBehaviour {
         return spawnedAmmo;
     }
 
-    public Transform SpawnEnemyAmmo(Vector3 position)
+    public Transform SpawnEnemyAmmo(Transform enemyAmmoSpot)
     {
         Transform spawnedAmmo = ammoManagerInstance.enemyAmmoQueue.Dequeue();
         EnemyAmmo pa = spawnedAmmo.GetComponent<EnemyAmmo>();
-        pa.speed = enemyAmmoSpeed;
-        pa.lifeTime = playerAmmoLifeTime;
+        spawnedAmmo.position = enemyAmmoSpot.position;
+        spawnedAmmo.rotation = enemyAmmoSpot.rotation;
+        //pa.speed = enemyAmmoSpeed;
+        //pa.lifeTime = playerAmmoLifeTime;
         spawnedAmmo.gameObject.SetActive(true);
-        spawnedAmmo.position = position;
-        //spawnedAmmo.rotation = rotation;
+        //pa.AmmoActived();
 
         ammoManagerInstance.enemyAmmoQueue.Enqueue(spawnedAmmo);
+
+        return spawnedAmmo;
+    }
+
+    public Transform SpawnEnemyAmmoSphere(Transform enemyAmmoSpot)
+    {
+        Transform spawnedAmmo = ammoManagerInstance.enemyAmmoSphereQueue.Dequeue();
+        EnemyAmmo pa = spawnedAmmo.GetComponent<EnemyAmmo>();
+        spawnedAmmo.position = enemyAmmoSpot.position;
+        spawnedAmmo.rotation = enemyAmmoSpot.rotation;
+        //pa.speed = enemyAmmoSpeed;
+        //pa.lifeTime = playerAmmoLifeTime;
+        spawnedAmmo.gameObject.SetActive(true);
+        //pa.AmmoActived();
+
+        ammoManagerInstance.enemyAmmoSphereQueue.Enqueue(spawnedAmmo);
 
         return spawnedAmmo;
     }
