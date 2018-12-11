@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpaceShipCollider : MonoBehaviour
 {
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,11 @@ public class EnemySpaceShipCollider : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerAmmo"))
         {
-            ExplosionManager.explosionManagerInstance.SpawnSpaceShipExplosion(transform.position);
-            transform.parent.gameObject.SetActive(false);
+            transform.parent.GetComponent<EnemySpaceShip>().TakeDamage(other.GetComponent<PlayerAmmo>().valueDamage);
+            //print("hit");
+            //ExplosionManager.explosionManagerInstance.SpawnSpaceShipExplosion(transform.position);
+            //transform.parent.gameObject.SetActive(false);
+
             //gameObject.SetActive(false);
         }
     }

@@ -141,6 +141,7 @@ public class Character : MonoBehaviour {
                  Mathf.Clamp(velocity.y, -characterRangeMin.y, characterRangeMax.y),
                  0f
                 );
+  
             transform.localPosition = velFixed;
             characterAnimator.SetFloat(s_MovingHash, leftJoystickInput.x);
 
@@ -203,8 +204,9 @@ public class Character : MonoBehaviour {
             if (Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
-                //spawnSpotCenter.LookAt(target);
                 AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotCenter);
+
+                //spawnSpotCenter.LookAt(target);
                 //spawnSpotLeft.LookAt(target);
                 //spawnSpotRight.LookAt(target);
                 //AmmoManager.ammoManagerInstance.SpawnAmmo(spawnSpotLeft.position, spawnSpotLeft.rotation);
@@ -222,8 +224,9 @@ public class Character : MonoBehaviour {
 
                     if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
                     {
+                        //print("SI_" + _rayHit.collider.gameObject.name);
                         //target = _rayHit.collider.transform.position;
-                        //UIManager.uiManagerInstance.SetCrossHairColor01();
+                        UIManager.uiManagerInstance.SetCrossHairColor02();
                         //Rotacion center hacia en direccion al objeto en la mira
                         spawnSpotCenter.LookAt(_rayHit.collider.transform);
 
@@ -238,16 +241,18 @@ public class Character : MonoBehaviour {
                     }
                     else
                     {
-                        spawnSpotCenter.LookAt(target);
-                        UIManager.uiManagerInstance.ShowCrossHairB(false);
+                    //print("NO_" + _rayHit.collider.gameObject.name);
+                    UIManager.uiManagerInstance.SetCrossHairColor01();
+                    spawnSpotCenter.LookAt(target);
+                        //UIManager.uiManagerInstance.ShowCrossHairB(false);
                     }
 
                 }
                 else
                 {
-                    //UIManager.uiManagerInstance.SetCrossHairColor00();
+                    UIManager.uiManagerInstance.SetCrossHairColor01();
                     //UIManager.uiManagerInstance.SetCrossHairBColor00();
-                    UIManager.uiManagerInstance.ShowCrossHairB(false);
+                    //UIManager.uiManagerInstance.ShowCrossHairB(false);
                     spawnSpotCenter.LookAt(target);
                 }
            
@@ -356,11 +361,13 @@ public class Character : MonoBehaviour {
             RaycastHit _rayHit;
             if (Physics.Raycast(_ray, out _rayHit, distanceRaycast))
             {
-
-                if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
+        
+                if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy")
+                    || _rayHit.collider.gameObject.CompareTag("EnemySpaceShip"))
                 {
+
                     //target = _rayHit.collider.transform.position;
-                    //UIManager.uiManagerInstance.SetCrossHairColor01();
+                    UIManager.uiManagerInstance.SetCrossHairColor02();
                     //Rotacion center hacia en direccion al objeto en la mira
                     spawnSpotCenter.LookAt(_rayHit.collider.transform);
 
@@ -376,15 +383,16 @@ public class Character : MonoBehaviour {
                 else
                 {
                     spawnSpotCenter.LookAt(target);
-                    UIManager.uiManagerInstance.ShowCrossHairB(false);
+                    UIManager.uiManagerInstance.SetCrossHairColor01();
+                    //UIManager.uiManagerInstance.ShowCrossHairB(false);
                 }
 
             }
             else
             {
-                //UIManager.uiManagerInstance.SetCrossHairColor00();
+                UIManager.uiManagerInstance.SetCrossHairColor01();
                 //UIManager.uiManagerInstance.SetCrossHairBColor00();
-                UIManager.uiManagerInstance.ShowCrossHairB(false);
+                //UIManager.uiManagerInstance.ShowCrossHairB(false);
                 spawnSpotCenter.LookAt(target);
             }
 
@@ -487,6 +495,7 @@ public class Character : MonoBehaviour {
             //explosion del player
             ExplosionManager.explosionManagerInstance.SpawnPlayerExplosion(transform.position);
             PlayerDamage(other.GetComponent<EnemyAmmo>().valueDamage);
+            other.gameObject.SetActive(false);
         }
 
 

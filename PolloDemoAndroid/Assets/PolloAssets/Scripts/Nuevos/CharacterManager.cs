@@ -53,6 +53,7 @@ public class CharacterManager : MonoBehaviour {
     {
         if (GameManager.gameManagerInstance.currentLevel == 1 && startMovement)
         {
+
             transform.position += transform.forward * Time.deltaTime * speedZ;
         }
         //else if (GameManager.gameManagerInstance.currentLevel == 2 && !startMovement && startTunnelAnimation)

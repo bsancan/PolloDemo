@@ -7,7 +7,7 @@ public class EnemyAmmo : MonoBehaviour
     public float speed = 2f;
     public float lifeTime = 2f;
     public int valueDamage = 10;
-    public float speedRotation = 1f;
+   // public float speedRotation = 1f;
     //1- laser      2- spera
     public int type = 0;
 
@@ -38,6 +38,7 @@ public class EnemyAmmo : MonoBehaviour
         }
         else if (type == 2)
         {
+            transform.LookAt(CharacterManager.characterManagerInstance.character.transform);
             transform.position += transform.forward * speed * Time.deltaTime;
             
         }
@@ -54,7 +55,8 @@ public class EnemyAmmo : MonoBehaviour
         }
         else if (type == 2)
         {
-            StartCoroutine(CorFollowPlayer());
+            //StartCoroutine(CorFollowPlayer());
+            //transform.LookAt(CharacterManager.characterManagerInstance.character.transform);
         }
     }
 
@@ -64,15 +66,6 @@ public class EnemyAmmo : MonoBehaviour
         gameObject.SetActive(false);
         //Destroy(gameObject);
 
-    }
-
-    IEnumerator CorFollowPlayer()
-    {
-        while(true)
-        {
-            yield return new WaitForSeconds(0.1f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, CharacterManager.characterManagerInstance.character.transform.rotation, speedRotation * Time.deltaTime);
-        }
     }
 
     private void OnTriggerEnter(Collider other)

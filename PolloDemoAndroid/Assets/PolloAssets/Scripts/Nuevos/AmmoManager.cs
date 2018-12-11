@@ -11,6 +11,7 @@ public class AmmoManager : MonoBehaviour {
 
     public float playerAmmoSpeed = 60f;
     public float playerAmmoLifeTime = 1f;
+    public int playerAmmoDamage = 10;
 
     //public float enemyAmmoSpeed = 4f;
     //public float enemyAmmoLifeTime = 1f;
@@ -104,6 +105,7 @@ public class AmmoManager : MonoBehaviour {
         PlayerAmmo pa = spawnedAmmo.GetComponent<PlayerAmmo>();
         pa.speed = playerAmmoSpeed;
         pa.lifeTime = playerAmmoLifeTime;
+        pa.valueDamage = playerAmmoDamage;
         //spawnedAmmo.SetParent(playerAmmo);
 
         spawnedAmmo.gameObject.SetActive(true);

@@ -36,6 +36,11 @@ public class PlayerAmmo : MonoBehaviour {
             gameObject.SetActive(false);
 
         }
-  
+        else if (other.gameObject.CompareTag("EnemySpaceShip"))
+        {
+            gameObject.SetActive(false);
+        }
+
+
     }
 }
