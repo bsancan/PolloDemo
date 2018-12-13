@@ -140,7 +140,7 @@ public class AmmoManager : MonoBehaviour {
     {
         Transform spawnedAmmo = ammoManagerInstance.enemyAmmoSphereQueue.Dequeue();
         EnemyAmmo pa = spawnedAmmo.GetComponent<EnemyAmmo>();
-        spawnedAmmo.position = enemyAmmoSpot.position;
+        spawnedAmmo.localPosition = enemyAmmoSpot.position;
         spawnedAmmo.rotation = enemyAmmoSpot.rotation;
         //pa.speed = enemyAmmoSpeed;
         //pa.lifeTime = playerAmmoLifeTime;

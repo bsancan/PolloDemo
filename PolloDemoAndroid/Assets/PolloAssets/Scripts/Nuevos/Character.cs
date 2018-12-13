@@ -410,6 +410,9 @@ public class Character : MonoBehaviour {
 
     private void PlayerDamage(int valueDamage)
     {
+        //if(true)
+        //    return;
+
         //damaged = true;
         
         if ((currentPlayerShield - valueDamage) >= 0)

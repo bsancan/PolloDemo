@@ -15,20 +15,24 @@ public class EnemySpaceShip : MonoBehaviour
 
     //variabes para laser
     [Header("LASERS")]
-    public int laserValueDamage = 5;
+    public int ammoDamage = 5;
     public float laserLifeTime = 1f;
     public int laserRound = 2;
     public float waitForNextLaserRound = 1f;
     public float laserRoundTimer = 0.5f;
-    public float laserSpeed = -20f;
+    public float ammoSpeed = -20f;
     public float sphereLifeTime = 1f;
     // private float sphereSpeedRotation = 1f;
-    [Header("Esferas")]
-    public float sphereSpeed = 1f;
-    public int sphereValueDamage = 10;
+    //[Header("Esferas")]
+    //public float sphereSpeed = 1f;
+    //public int sphereValueDamage = 10;
 
+    static int s_Ship02_A_Hash = Animator.StringToHash("Pos01");
+    static int s_Ship02_B_Hash = Animator.StringToHash("Pos01");
 
-   
+    static int s_Ship03_A_Hash = Animator.StringToHash("Pos02_A");
+    static int s_Ship03_B_Hash = Animator.StringToHash("Pos02_B");
+
     //private Transform playerPivot;
     //private Vector3 offset;
 
@@ -44,14 +48,6 @@ public class EnemySpaceShip : MonoBehaviour
   
         //StartCoroutine(CorSpawn());
         
-    }
-
-    public void StartShip01_A()
-    {
-        //enemyAnimator.SetTrigger("Ship01_A");
-
-        StartCoroutine(CorShip01_A_LaserSpawn());
-
     }
 
     void Update()
@@ -76,10 +72,42 @@ public class EnemySpaceShip : MonoBehaviour
     //    this.sphereValueDamage = sphereValueDamage;
     //}
 
+    public void StartShip01()
+    {
+        StartCoroutine(CorShip01_A_LaserSpawn());
+    }
+
+    public void StartShip02()
+    {
+        enemyAnimator.SetTrigger(s_Ship02_A_Hash);
+       
+    }
+
+    public void StartShip03(string animation)
+    {
+        if(animation == "A")
+        {
+            enemyAnimator.SetTrigger(s_Ship03_A_Hash);
+        }
+        if (animation == "B")
+        {
+            enemyAnimator.SetTrigger(s_Ship03_B_Hash);
+        }
+    }
 
     public void SpaceAnimationEnd()
     {
         gameObject.SetActive(false);
+    }
+
+    public void StartShip02Laser()
+    {
+        StartCoroutine(CorShip02_A_LaserSpawn());
+    }
+
+    public void StartShip03Sphere()
+    {
+        StartCoroutine(CorShip03_A_SphereSpawn());
     }
 
     public void TakeDamage(int damageFromPlayer)
@@ -121,92 +149,53 @@ public class EnemySpaceShip : MonoBehaviour
                 Transform tra = AmmoManager.ammoManagerInstance.SpawnEnemyAmmo(spot);
            
                 EnemyAmmo ammo = tra.GetComponent<EnemyAmmo>();
-                ammo.speed = laserSpeed;
-                ammo.valueDamage = laserValueDamage;
+                ammo.speed = ammoSpeed;
+                ammo.valueDamage = ammoDamage;
                 ammo.lifeTime = laserLifeTime;
                 ammo.type = typeAmmo;
                 ammo.AmmoActived();
                 count++;
             }
         }
-
-
     }
 
-
-
-    //============pruebas
-
-    public void PlayEnemySpaceShipAnimation(int opc, int typeAmmo)
+    IEnumerator CorShip02_A_LaserSpawn()
     {
-        this.typeAmmo = typeAmmo;
-        //1- pos01  2-pos02_A 3-pos02_B
-        if (opc == 1)
-        {
-            enemyAnimator.SetTrigger("Pos01");
-            StartCoroutine(CorSpawn());
-
-        }
-        else if (opc == 2)
-        {
-            enemyAnimator.SetTrigger("Pos02_A");
-        }
-        else if (opc == 3)
-        {
-            enemyAnimator.SetTrigger("Pos02_B");
-        }
-
-        //StartCoroutine(CorSpawn());
-    }
-
-    public void StartSphereSpawn()
-    {
-        StartCoroutine(CorSphereSpawn(2));
-    }
-
-
-    IEnumerator CorSpawn()
-    {
-        yield return null;
         int count = 0;
-        yield return new WaitForSeconds(waitForNextLaserRound);
-        while (count <2)
+        //yield return new WaitForSeconds(waitForNextLaserRound);
+        while (count < laserRound)
         {
             yield return new WaitForSeconds(laserRoundTimer);
             spot.LookAt(CharacterManager.characterManagerInstance.character.transform);
             Transform tra = AmmoManager.ammoManagerInstance.SpawnEnemyAmmo(spot);
+
             EnemyAmmo ammo = tra.GetComponent<EnemyAmmo>();
-            ammo.speed = laserSpeed;
-            ammo.valueDamage = laserValueDamage;
+            ammo.speed = ammoSpeed;
+            ammo.valueDamage = ammoDamage;
             ammo.lifeTime = laserLifeTime;
-            //ammo.speedRotation = sphereSpeedRotation;
             ammo.type = typeAmmo;
             ammo.AmmoActived();
             count++;
-            //GameObject go = Instantiate(laser, Vector3.zero, Quaternion.identity) as GameObject;
-
-            //go.transform.position = spot.position;
-            //go.GetComponent<EnemyAmmo>().speed = laserSpeed;
-            //go.SetActive(true);
         }
     }
-
-    IEnumerator CorSphereSpawn(int typeAmmo)
+    
+    IEnumerator CorShip03_A_SphereSpawn()
     {
         yield return null;
         int count = 0;
         //yield return new WaitForSeconds(laserTimer);
-        while (count < 3)
+        while (count < 1)
         {
             //yield return new WaitForSeconds(laserWaveTimer);
             spot.LookAt(CharacterManager.characterManagerInstance.character.transform);
             Transform tra = AmmoManager.ammoManagerInstance.SpawnEnemyAmmoSphere(spot);
             EnemyAmmo ammo = tra.GetComponent<EnemyAmmo>();
-            ammo.speed = sphereSpeed;
-            ammo.valueDamage = sphereValueDamage;
+            
+            ammo.speed = ammoSpeed;
+            ammo.valueDamage = ammoDamage;
             //ammo.lifeTime = laserLifeTime;
             //ammo.speedRotation = sphereSpeedRotation;
-            ammo.type = typeAmmo;
+            ammo.type = 2;
             ammo.AmmoActived();
             yield return new WaitForSeconds(0.5f);
             count++;
@@ -217,4 +206,83 @@ public class EnemySpaceShip : MonoBehaviour
             //go.SetActive(true);
         }
     }
+    //============pruebas
+
+    //public void PlayEnemySpaceShipAnimation(int opc, int typeAmmo)
+    //{
+    //    this.typeAmmo = typeAmmo;
+    //    //1- pos01  2-pos02_A 3-pos02_B
+    //    if (opc == 1)
+    //    {
+    //        enemyAnimator.SetTrigger("Pos01");
+    //        StartCoroutine(CorSpawn());
+
+    //    }
+    //    else if (opc == 2)
+    //    {
+    //        enemyAnimator.SetTrigger("Pos02_A");
+    //    }
+    //    else if (opc == 3)
+    //    {
+    //        enemyAnimator.SetTrigger("Pos02_B");
+    //    }
+
+    //    //StartCoroutine(CorSpawn());
+    //}
+
+  
+
+
+    //IEnumerator CorSpawn()
+    //{
+    //    yield return null;
+    //    int count = 0;
+    //    yield return new WaitForSeconds(waitForNextLaserRound);
+    //    while (count <2)
+    //    {
+    //        yield return new WaitForSeconds(laserRoundTimer);
+    //        spot.LookAt(CharacterManager.characterManagerInstance.character.transform);
+    //        Transform tra = AmmoManager.ammoManagerInstance.SpawnEnemyAmmo(spot);
+    //        EnemyAmmo ammo = tra.GetComponent<EnemyAmmo>();
+    //        ammo.speed = laserSpeed;
+    //        ammo.valueDamage = laserValueDamage;
+    //        ammo.lifeTime = laserLifeTime;
+    //        //ammo.speedRotation = sphereSpeedRotation;
+    //        ammo.type = typeAmmo;
+    //        ammo.AmmoActived();
+    //        count++;
+    //        //GameObject go = Instantiate(laser, Vector3.zero, Quaternion.identity) as GameObject;
+
+    //        //go.transform.position = spot.position;
+    //        //go.GetComponent<EnemyAmmo>().speed = laserSpeed;
+    //        //go.SetActive(true);
+    //    }
+    //}
+
+    //IEnumerator CorSphereSpawn(int typeAmmo)
+    //{
+    //    yield return null;
+    //    int count = 0;
+    //    //yield return new WaitForSeconds(laserTimer);
+    //    while (count < 3)
+    //    {
+    //        //yield return new WaitForSeconds(laserWaveTimer);
+    //        spot.LookAt(CharacterManager.characterManagerInstance.character.transform);
+    //        Transform tra = AmmoManager.ammoManagerInstance.SpawnEnemyAmmoSphere(spot);
+    //        EnemyAmmo ammo = tra.GetComponent<EnemyAmmo>();
+    //        ammo.speed = sphereSpeed;
+    //        ammo.valueDamage = sphereValueDamage;
+    //        //ammo.lifeTime = laserLifeTime;
+    //        //ammo.speedRotation = sphereSpeedRotation;
+    //        ammo.type = typeAmmo;
+    //        ammo.AmmoActived();
+    //        yield return new WaitForSeconds(0.5f);
+    //        count++;
+    //        //GameObject go = Instantiate(laser, Vector3.zero, Quaternion.identity) as GameObject;
+
+    //        //go.transform.position = spot.position;
+    //        //go.GetComponent<EnemyAmmo>().speed = laserSpeed;
+    //        //go.SetActive(true);
+    //    }
+    //}
 }

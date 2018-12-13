@@ -62,7 +62,6 @@ public class Level02 : MonoBehaviour
         initialRotationForTunnel = Quaternion.Euler(0, 90.05801f, 0);
         startTunnelAnimation = true;
         tunnelAnimation.Play("Anm_ne_esc");
-        tunnel.GetComponent<Renderer>().enabled = false;
     }
 
 
