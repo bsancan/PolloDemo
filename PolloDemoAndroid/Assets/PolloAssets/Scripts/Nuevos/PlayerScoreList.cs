@@ -44,8 +44,8 @@ public class PlayerScoreList : MonoBehaviour
         // es un nuevo usuario es necesario validarlo, solo se aceptan 10 puntajes
         scoreManager.UpdatePlayerScoreList();
         golist = new List<GameObject>();
-        SL_playersScoreList save = new SL_playersScoreList();
-        save.scores = new SL_playersScoreList[10];
+        ScoresData scoreData = new ScoresData();
+        //scoreData.scores = new ScoresData[10];
         string[] names = scoreManager.GetPlayerNames();
         int rank = 0;
         foreach (string name in names)
@@ -59,12 +59,12 @@ public class PlayerScoreList : MonoBehaviour
             go.GetComponent<PlayerScoreEntry>().SetPlayerScoreData(rank, name, _score);
             go.SetActive(true);
             golist.Add(go);
-            save.scores[rank - 1] = new SL_playersScoreList(name, _score);
+            scoreData.scores[rank - 1] = new ScoresData(name, _score);
             //print(name.ToString() + " / " + _score);
         }
         //guardo los puntajes
         //busoc si se encuentra alguna memoria guardada
-        Helper.SavePlayersScore(NameDictionary.playerScoreListKey_lvl_01, save);
+        SaveSystem.SaveScores(scoreData, NameDictionary.playerScoreListKey_lvl_01);
 
     }
 

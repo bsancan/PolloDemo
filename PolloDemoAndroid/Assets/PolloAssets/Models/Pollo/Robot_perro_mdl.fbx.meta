@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: dabbaac35e3f2e241bca0980e32b65d8
+timeCreated: 1514085779
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ala_inf_der
+    100002: ala_inf_izq
+    100004: ala_sor_der
+    100006: ala_sor_izq
+    100008: boca_inf
+    100010: boca_sup
+    100012: Braz_canon
+    100014: Braz_canon2
+    100016: cn_ala_der
+    100018: cn_ala_izq
+    100020: controles
+    100022: cuerpo_down1
+    100024: Cuerpo_inferior
+    100026: Cuerpo_superior
+    100028: cuerpo_up
+    100030: dedos_der
+    100032: dedos_izq
+    100034: master_anm
+    100036: master_brazo_der
+    100038: master_brazo_izq
+    100040: model
+    100042: ojo_der
+    100044: ojo_izq
+    100046: pierna
+    100048: pierna_der
+    100050: pierna_der1
+    100052: Pollo_ala_inf_der
+    100054: Pollo_ala_inf_der1
+    100056: Pollo_ala_sup_der
+    100058: Pollo_ala_sup_der1
+    100060: Pollo_art_der
+    100062: Pollo_art_der1
+    100064: Pollo_brz__int_der
+    100066: Pollo_brz__int_izq
+    100068: Pollo_brz_canon1
+    100070: Pollo_brz_canon2
+    100072: Pollo_cj_der
+    100074: Pollo_cj_izq
+    100076: Pollo_Crp_int
+    100078: pollo_dd_der_2
+    100080: pollo_dd_der_5
+    100082: Pollo_ojo_der
+    100084: Pollo_pierna_Der
+    100086: Pollo_pierna_Der1
+    100088: Pollo_prn_msl_der
+    100090: Pollo_prn_msl_der1
+    100092: //RootNode
+    100094: sombrero
+    100096: sombrero 1
+    100098: boca_down1
+    100100: boca_down2
+    100102: pollo_dd_der_1
+    100104: pollo_dd_der_3
+    400000: ala_inf_der
+    400002: ala_inf_izq
+    400004: ala_sor_der
+    400006: ala_sor_izq
+    400008: boca_inf
+    400010: boca_sup
+    400012: Braz_canon
+    400014: Braz_canon2
+    400016: cn_ala_der
+    400018: cn_ala_izq
+    400020: controles
+    400022: cuerpo_down1
+    400024: Cuerpo_inferior
+    400026: Cuerpo_superior
+    400028: cuerpo_up
+    400030: dedos_der
+    400032: dedos_izq
+    400034: master_anm
+    400036: master_brazo_der
+    400038: master_brazo_izq
+    400040: model
+    400042: ojo_der
+    400044: ojo_izq
+    400046: pierna
+    400048: pierna_der
+    400050: pierna_der1
+    400052: Pollo_ala_inf_der
+    400054: Pollo_ala_inf_der1
+    400056: Pollo_ala_sup_der
+    400058: Pollo_ala_sup_der1
+    400060: Pollo_art_der
+    400062: Pollo_art_der1
+    400064: Pollo_brz__int_der
+    400066: Pollo_brz__int_izq
+    400068: Pollo_brz_canon1
+    400070: Pollo_brz_canon2
+    400072: Pollo_cj_der
+    400074: Pollo_cj_izq
+    400076: Pollo_Crp_int
+    400078: pollo_dd_der_2
+    400080: pollo_dd_der_5
+    400082: Pollo_ojo_der
+    400084: Pollo_pierna_Der
+    400086: Pollo_pierna_Der1
+    400088: Pollo_prn_msl_der
+    400090: Pollo_prn_msl_der1
+    400092: //RootNode
+    400094: sombrero
+    400096: sombrero 1
+    400098: boca_down1
+    400100: boca_down2
+    400102: pollo_dd_der_1
+    400104: pollo_dd_der_3
+    2300000: Braz_canon
+    2300002: Braz_canon2
+    2300004: cuerpo_down1
+    2300006: cuerpo_up
+    2300008: Pollo_ala_inf_der
+    2300010: Pollo_ala_inf_der1
+    2300012: Pollo_ala_sup_der
+    2300014: Pollo_ala_sup_der1
+    2300016: Pollo_art_der
+    2300018: Pollo_art_der1
+    2300020: Pollo_brz__int_der
+    2300022: Pollo_brz__int_izq
+    2300024: Pollo_brz_canon1
+    2300026: Pollo_brz_canon2
+    2300028: Pollo_cj_der
+    2300030: Pollo_cj_izq
+    2300032: Pollo_Crp_int
+    2300034: pollo_dd_der_2
+    2300036: pollo_dd_der_5
+    2300038: Pollo_ojo_der
+    2300040: Pollo_pierna_Der
+    2300042: Pollo_pierna_Der1
+    2300044: Pollo_prn_msl_der
+    2300046: Pollo_prn_msl_der1
+    2300048: sombrero
+    2300050: boca_down1
+    2300052: boca_down2
+    2300054: pollo_dd_der_1
+    2300056: pollo_dd_der_3
+    3300000: Braz_canon
+    3300002: Braz_canon2
+    3300004: cuerpo_down1
+    3300006: cuerpo_up
+    3300008: Pollo_ala_inf_der
+    3300010: Pollo_ala_inf_der1
+    3300012: Pollo_ala_sup_der
+    3300014: Pollo_ala_sup_der1
+    3300016: Pollo_art_der
+    3300018: Pollo_art_der1
+    3300020: Pollo_brz__int_der
+    3300022: Pollo_brz__int_izq
+    3300024: Pollo_brz_canon1
+    3300026: Pollo_brz_canon2
+    3300028: Pollo_cj_der
+    3300030: Pollo_cj_izq
+    3300032: Pollo_Crp_int
+    3300034: pollo_dd_der_2
+    3300036: pollo_dd_der_5
+    3300038: Pollo_ojo_der
+    3300040: Pollo_pierna_Der
+    3300042: Pollo_pierna_Der1
+    3300044: Pollo_prn_msl_der
+    3300046: Pollo_prn_msl_der1
+    3300048: sombrero
+    3300050: boca_down1
+    3300052: boca_down2
+    3300054: pollo_dd_der_1
+    3300056: pollo_dd_der_3
+    4300000: Pollo_pierna_Der1
+    4300002: Pollo_prn_msl_der1
+    4300004: pollo_dd_der_5
+    4300006: Pollo_brz_canon1
+    4300008: Pollo_Crp_int
+    4300010: Pollo_brz__int_der
+    4300012: Pollo_brz__int_izq
+    4300014: Braz_canon
+    4300016: sombrero
+    4300018: cuerpo_up
+    4300020: Pollo_ojo_der
+    4300022: cuerpo_down1
+    4300024: Pollo_cj_der
+    4300026: Pollo_cj_izq
+    4300028: Pollo_ala_sup_der
+    4300030: Pollo_art_der
+    4300032: Pollo_ala_inf_der
+    4300034: pollo_dd_der_2
+    4300036: Pollo_pierna_Der
+    4300038: Pollo_prn_msl_der
+    4300040: Pollo_ala_inf_der1
+    4300042: Pollo_art_der1
+    4300044: Pollo_ala_sup_der1
+    4300046: Braz_canon2
+    4300048: Pollo_brz_canon2
+    4300050: boca_down1
+    4300052: boca_down2
+    4300054: pollo_dd_der_3
+    4300056: pollo_dd_der_1
+    7400000: Perro_Frente
+    7400002: Perro_derecha
+    7400004: Perro_izquierda
+    7400006: Perro_disparo
+    7400008: Perro_dano
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: perro_mtr
+    second: {fileID: 2100000, guid: e78b3082d88ea284c9732c52310e47a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pollo_model_0003_Pollo_robot
+    second: {fileID: 2100000, guid: d867181a0bc620740aff3691d4389321, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Perro_Frente
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Perro_derecha
+      takeName: Take 001
+      firstFrame: 61
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Perro_izquierda
+      takeName: Take 001
+      firstFrame: 121
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Perro_disparo
+      takeName: Take 001
+      firstFrame: 181
+      lastFrame: 193
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Perro_dano
+      takeName: Take 001
+      firstFrame: 194
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.55
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

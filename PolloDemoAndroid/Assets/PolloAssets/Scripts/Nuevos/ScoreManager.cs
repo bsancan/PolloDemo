@@ -45,10 +45,10 @@ public class ScoreManager : MonoBehaviour
         playerScores = new Dictionary<string, int>();
 
         //busoc si se encuentra alguna memoria guardada
-        SL_playersScoreList load = (SL_playersScoreList)Helper.LoadPlayersScore(NameDictionary.playerScoreListKey_lvl_01);
+        ScoresData load = SaveSystem.LoadScores(NameDictionary.playerScoreListKey_lvl_01);
         if(load != null)
         {
-            foreach(SL_playersScoreList sl in load.scores)
+            foreach(ScoresData sl in load.scores)
             {
                 SetScore(sl.name, sl.score);
             }
