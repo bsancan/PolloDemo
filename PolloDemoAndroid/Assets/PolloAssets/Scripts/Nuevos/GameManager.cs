@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gameManagerInstance;
-    public int currentLevel;
+    [Header("PARA PRUEBAS Y DESARROLLO")]
     [SerializeField]
     private bool developMode;
+    [SerializeField]
+    private bool resetAllKeys;
+
+
+    [Header("============")]
+    public int currentLevel;
+
+    public static GameManager gameManagerInstance;
     public bool isGameOver;
     [SerializeField]
     private int frameRate;
@@ -38,6 +45,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        if(resetAllKeys)
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
         if (gameManagerInstance == null)
         {
             gameManagerInstance = this;
@@ -114,6 +126,17 @@ public class GameManager : MonoBehaviour
     public void SetInitialLevelValues() {
         if (!developMode)
         {
+            PlayerData playerData = SaveSystem.LoadPlayerData();
+
+            if(playerData == null)
+            {
+                //en caso de no encontrar el archivo del player
+                playerData = new PlayerData(1, Vector3.zero);
+                SaveSystem.SavePlayerData(playerData);
+            }
+
+            currentLevel = playerData.lastLevel;
+
             if (currentLevel == 1)
             {
                 virtualCam1.SetActive(true);
@@ -134,6 +157,8 @@ public class GameManager : MonoBehaviour
                 //CharacterManager.characterManagerInstance.SetInitialTunnelValues();
 
             }
+
+
         }
         else
         {

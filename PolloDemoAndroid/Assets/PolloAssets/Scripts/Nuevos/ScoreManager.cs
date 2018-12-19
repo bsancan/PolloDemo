@@ -43,9 +43,17 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         playerScores = new Dictionary<string, int>();
+        ScoresData load = null;
 
         //busoc si se encuentra alguna memoria guardada
-        ScoresData load = SaveSystem.LoadScores(NameDictionary.playerScoreListKey_lvl_01);
+        if (GameManager.gameManagerInstance.currentLevel == 1)
+        {
+            load = SaveSystem.LoadScores(NameDictionary.playerScoreListKey_lvl_01);
+        }else if(GameManager.gameManagerInstance.currentLevel == 2)
+        {
+            load = SaveSystem.LoadScores(NameDictionary.playerScoreListKey_lvl_02);
+        }
+        
         if(load != null)
         {
             foreach(ScoresData sl in load.scores)
@@ -53,9 +61,9 @@ public class ScoreManager : MonoBehaviour
                 SetScore(sl.name, sl.score);
             }
 
-            print("Se cargo la memoria de < " + NameDictionary.playerScoreListKey_lvl_01 + " >");
+            print("Se cargo la memoria del nivel < " + GameManager.gameManagerInstance.currentLevel + " >");
 
-        }   else
+        }else
         {
             //default data
             //SetScore("Nuevo record", 0);

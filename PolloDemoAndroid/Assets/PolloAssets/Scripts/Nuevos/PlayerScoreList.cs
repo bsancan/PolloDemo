@@ -64,7 +64,14 @@ public class PlayerScoreList : MonoBehaviour
         }
         //guardo los puntajes
         //busoc si se encuentra alguna memoria guardada
-        SaveSystem.SaveScores(scoreData, NameDictionary.playerScoreListKey_lvl_01);
+        if(GameManager.gameManagerInstance.currentLevel == 1)
+        {
+            SaveSystem.SaveScores(scoreData, NameDictionary.playerScoreListKey_lvl_01);
+        }else if(GameManager.gameManagerInstance.currentLevel == 2)
+        {
+            SaveSystem.SaveScores(scoreData, NameDictionary.playerScoreListKey_lvl_02);
+        }
+        
 
     }
 

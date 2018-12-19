@@ -14,5 +14,9 @@ public class NameDictionary : MonoBehaviour
 
     //saves and loads
     public const string playerDataKey = "slPlayerDataKey";
+    //save de scores 
     public const string playerScoreListKey_lvl_01 = "slPlayerScoreListKey_lvl_01";
+    //save de scores 
+    public const string playerScoreListKey_lvl_02 = "slPlayerScoreListKey_lvl_02";
+
 }

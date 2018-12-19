@@ -1,0 +1,553 @@
+fileFormatVersion: 2
+guid: 04f5c5014f150314e931d852bf00d54e
+timeCreated: 1516590865
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: arm_1
+    100002: arm_2
+    100004: arm_2v_1
+    100006: arm_2v_2
+    100008: arm_2v_3
+    100010: cubierta_motor
+    100012: laser_base
+    100014: laser_base 1
+    100016: laser_base2
+    100018: laser_base2 1
+    100020: laser_base3
+    100022: laser_base3 1
+    100024: laser_canon
+    100026: laser_canon 1
+    100028: laser_canon1
+    100030: laser_canon2
+    100032: laser_canon3
+    100034: laser_canon4
+    100036: laser_cuerpo1
+    100038: laser_cuerpo1 1
+    100040: laser_cuerpo2
+    100042: laser_cuerpo2 1
+    100044: laser_cuerpo3
+    100046: laser_cuerpo3 1
+    100048: misiles
+    100050: misiles 1
+    100052: misiles1
+    100054: misiles1 1
+    100056: misiles2
+    100058: misiles3
+    100060: motor2
+    100062: motor2v_1
+    100064: motor2v_1 1
+    100066: motor3
+    100068: motor4
+    100070: motores
+    100072: mt_1
+    100074: mt_2
+    100076: mt_3
+    100078: mt_4
+    100080: mt_5
+    100082: mt_6
+    100084: mt_7
+    100086: mt_8
+    100088: //RootNode
+    100090: nave_izq
+    100092: pCube1
+    100094: pCube1 1
+    100096: pCube2
+    100098: pCube2 1
+    100100: pCube3
+    100102: pCube3 1
+    100104: pCube4
+    100106: pCube4 1
+    100108: polySurface10
+    100110: polySurface12
+    100112: polySurface14
+    100114: polySurface16
+    100116: polySurface3
+    100118: polySurface4
+    100120: polySurface6
+    100122: polySurface8
+    100124: canon_tb
+    100126: canon_tb 1
+    100128: canon_tb 2
+    100130: canon_tb 3
+    100132: canon_tb 4
+    100134: canon_tb 5
+    100136: canon_tb 6
+    100138: canon_tb 7
+    100140: canon_v1
+    100142: canon_v2
+    100144: canon_v3
+    100146: canon_v4
+    100148: canon_v5
+    100150: canon_v6
+    100152: canon_v7
+    100154: canon_v8
+    100156: group1
+    100158: laser_base4
+    100160: laser_base5
+    100162: laser_canon1 1
+    100164: laser_canon1 2
+    100166: laser_cuerpo2 2
+    100168: laser_cuerpo2 3
+    100170: misiles4
+    100172: misiles5
+    100174: misiles6
+    100176: misiles7
+    100178: misiles8
+    100180: misiles9
+    100182: mt_10
+    100184: mt_9
+    100186: polySurface17
+    100188: polySurface18
+    400000: arm_1
+    400002: arm_2
+    400004: arm_2v_1
+    400006: arm_2v_2
+    400008: arm_2v_3
+    400010: cubierta_motor
+    400012: laser_base
+    400014: laser_base 1
+    400016: laser_base2
+    400018: laser_base2 1
+    400020: laser_base3
+    400022: laser_base3 1
+    400024: laser_canon
+    400026: laser_canon 1
+    400028: laser_canon1
+    400030: laser_canon2
+    400032: laser_canon3
+    400034: laser_canon4
+    400036: laser_cuerpo1
+    400038: laser_cuerpo1 1
+    400040: laser_cuerpo2
+    400042: laser_cuerpo2 1
+    400044: laser_cuerpo3
+    400046: laser_cuerpo3 1
+    400048: misiles
+    400050: misiles 1
+    400052: misiles1
+    400054: misiles1 1
+    400056: misiles2
+    400058: misiles3
+    400060: motor2
+    400062: motor2v_1
+    400064: motor2v_1 1
+    400066: motor3
+    400068: motor4
+    400070: motores
+    400072: mt_1
+    400074: mt_2
+    400076: mt_3
+    400078: mt_4
+    400080: mt_5
+    400082: mt_6
+    400084: mt_7
+    400086: mt_8
+    400088: //RootNode
+    400090: nave_izq
+    400092: pCube1
+    400094: pCube1 1
+    400096: pCube2
+    400098: pCube2 1
+    400100: pCube3
+    400102: pCube3 1
+    400104: pCube4
+    400106: pCube4 1
+    400108: polySurface10
+    400110: polySurface12
+    400112: polySurface14
+    400114: polySurface16
+    400116: polySurface3
+    400118: polySurface4
+    400120: polySurface6
+    400122: polySurface8
+    400124: canon_tb
+    400126: canon_tb 1
+    400128: canon_tb 2
+    400130: canon_tb 3
+    400132: canon_tb 4
+    400134: canon_tb 5
+    400136: canon_tb 6
+    400138: canon_tb 7
+    400140: canon_v1
+    400142: canon_v2
+    400144: canon_v3
+    400146: canon_v4
+    400148: canon_v5
+    400150: canon_v6
+    400152: canon_v7
+    400154: canon_v8
+    400156: group1
+    400158: laser_base4
+    400160: laser_base5
+    400162: laser_canon1 1
+    400164: laser_canon1 2
+    400166: laser_cuerpo2 2
+    400168: laser_cuerpo2 3
+    400170: misiles4
+    400172: misiles5
+    400174: misiles6
+    400176: misiles7
+    400178: misiles8
+    400180: misiles9
+    400182: mt_10
+    400184: mt_9
+    400186: polySurface17
+    400188: polySurface18
+    2300000: arm_1
+    2300002: arm_2
+    2300004: arm_2v_1
+    2300006: arm_2v_2
+    2300008: arm_2v_3
+    2300010: laser_base
+    2300012: laser_base 1
+    2300014: laser_base2
+    2300016: laser_base2 1
+    2300018: laser_base3
+    2300020: laser_base3 1
+    2300022: laser_canon
+    2300024: laser_canon 1
+    2300026: laser_canon1
+    2300028: laser_canon2
+    2300030: laser_canon3
+    2300032: laser_canon4
+    2300034: laser_cuerpo1
+    2300036: laser_cuerpo1 1
+    2300038: laser_cuerpo2
+    2300040: laser_cuerpo2 1
+    2300042: laser_cuerpo3
+    2300044: laser_cuerpo3 1
+    2300046: misiles
+    2300048: misiles 1
+    2300050: misiles1
+    2300052: misiles1 1
+    2300054: misiles2
+    2300056: misiles3
+    2300058: motor2v_1
+    2300060: motor2v_1 1
+    2300062: mt_1
+    2300064: mt_2
+    2300066: mt_3
+    2300068: mt_4
+    2300070: mt_5
+    2300072: mt_6
+    2300074: mt_7
+    2300076: mt_8
+    2300078: pCube1
+    2300080: pCube1 1
+    2300082: pCube2
+    2300084: pCube2 1
+    2300086: pCube3
+    2300088: pCube3 1
+    2300090: pCube4
+    2300092: pCube4 1
+    2300094: polySurface10
+    2300096: polySurface12
+    2300098: polySurface14
+    2300100: polySurface16
+    2300102: polySurface3
+    2300104: polySurface4
+    2300106: polySurface6
+    2300108: polySurface8
+    2300110: canon_tb
+    2300112: canon_tb 1
+    2300114: canon_tb 2
+    2300116: canon_tb 3
+    2300118: canon_tb 4
+    2300120: canon_tb 5
+    2300122: canon_tb 6
+    2300124: canon_tb 7
+    2300126: canon_v1
+    2300128: canon_v2
+    2300130: canon_v3
+    2300132: canon_v4
+    2300134: canon_v5
+    2300136: canon_v6
+    2300138: canon_v7
+    2300140: canon_v8
+    2300142: laser_base4
+    2300144: laser_base5
+    2300146: laser_canon1 1
+    2300148: laser_canon1 2
+    2300150: laser_cuerpo2 2
+    2300152: laser_cuerpo2 3
+    2300154: misiles4
+    2300156: misiles5
+    2300158: misiles6
+    2300160: misiles7
+    2300162: misiles8
+    2300164: misiles9
+    2300166: mt_10
+    2300168: mt_9
+    2300170: polySurface17
+    2300172: polySurface18
+    3300000: arm_1
+    3300002: arm_2
+    3300004: arm_2v_1
+    3300006: arm_2v_2
+    3300008: arm_2v_3
+    3300010: laser_base
+    3300012: laser_base 1
+    3300014: laser_base2
+    3300016: laser_base2 1
+    3300018: laser_base3
+    3300020: laser_base3 1
+    3300022: laser_canon
+    3300024: laser_canon 1
+    3300026: laser_canon1
+    3300028: laser_canon2
+    3300030: laser_canon3
+    3300032: laser_canon4
+    3300034: laser_cuerpo1
+    3300036: laser_cuerpo1 1
+    3300038: laser_cuerpo2
+    3300040: laser_cuerpo2 1
+    3300042: laser_cuerpo3
+    3300044: laser_cuerpo3 1
+    3300046: misiles
+    3300048: misiles 1
+    3300050: misiles1
+    3300052: misiles1 1
+    3300054: misiles2
+    3300056: misiles3
+    3300058: motor2v_1
+    3300060: motor2v_1 1
+    3300062: mt_1
+    3300064: mt_2
+    3300066: mt_3
+    3300068: mt_4
+    3300070: mt_5
+    3300072: mt_6
+    3300074: mt_7
+    3300076: mt_8
+    3300078: pCube1
+    3300080: pCube1 1
+    3300082: pCube2
+    3300084: pCube2 1
+    3300086: pCube3
+    3300088: pCube3 1
+    3300090: pCube4
+    3300092: pCube4 1
+    3300094: polySurface10
+    3300096: polySurface12
+    3300098: polySurface14
+    3300100: polySurface16
+    3300102: polySurface3
+    3300104: polySurface4
+    3300106: polySurface6
+    3300108: polySurface8
+    3300110: canon_tb
+    3300112: canon_tb 1
+    3300114: canon_tb 2
+    3300116: canon_tb 3
+    3300118: canon_tb 4
+    3300120: canon_tb 5
+    3300122: canon_tb 6
+    3300124: canon_tb 7
+    3300126: canon_v1
+    3300128: canon_v2
+    3300130: canon_v3
+    3300132: canon_v4
+    3300134: canon_v5
+    3300136: canon_v6
+    3300138: canon_v7
+    3300140: canon_v8
+    3300142: laser_base4
+    3300144: laser_base5
+    3300146: laser_canon1 1
+    3300148: laser_canon1 2
+    3300150: laser_cuerpo2 2
+    3300152: laser_cuerpo2 3
+    3300154: misiles4
+    3300156: misiles5
+    3300158: misiles6
+    3300160: misiles7
+    3300162: misiles8
+    3300164: misiles9
+    3300166: mt_10
+    3300168: mt_9
+    3300170: polySurface17
+    3300172: polySurface18
+    4300000: motor2v_1
+    4300002: arm_1
+    4300004: arm_2
+    4300006: arm_2v_3
+    4300008: arm_2v_1
+    4300010: arm_2v_2
+    4300012: polySurface3
+    4300014: polySurface4
+    4300016: misiles1
+    4300018: pCube3
+    4300020: pCube1
+    4300022: pCube2
+    4300024: pCube4
+    4300026: laser_base
+    4300028: laser_cuerpo1
+    4300030: laser_canon
+    4300032: laser_base2
+    4300034: laser_cuerpo2
+    4300036: laser_canon1
+    4300038: laser_base3
+    4300040: laser_cuerpo3
+    4300042: laser_canon2
+    4300044: misiles
+    4300046: misiles1
+    4300048: pCube3
+    4300050: pCube1
+    4300052: pCube2
+    4300054: pCube4
+    4300056: laser_base
+    4300058: laser_cuerpo1
+    4300060: laser_canon
+    4300062: laser_base2
+    4300064: laser_cuerpo2
+    4300066: laser_canon3
+    4300068: laser_base3
+    4300070: laser_cuerpo3
+    4300072: laser_canon4
+    4300074: motor2v_1
+    4300076: misiles
+    4300078: misiles3
+    4300080: misiles2
+    4300082: mt_1
+    4300084: mt_3
+    4300086: mt_5
+    4300088: mt_7
+    4300090: mt_2
+    4300092: mt_4
+    4300094: mt_6
+    4300096: mt_8
+    4300098: polySurface6
+    4300100: polySurface10
+    4300102: polySurface16
+    4300104: polySurface8
+    4300106: polySurface12
+    4300108: polySurface14
+    4300110: canon_v4
+    4300112: canon_tb
+    4300114: canon_v3
+    4300116: canon_tb
+    4300118: canon_v2
+    4300120: canon_tb
+    4300122: canon_v1
+    4300124: canon_tb
+    4300126: misiles5
+    4300128: misiles6
+    4300130: misiles9
+    4300132: mt_9
+    4300134: mt_10
+    4300136: polySurface17
+    4300138: polySurface18
+    4300140: laser_base4
+    4300142: laser_cuerpo2
+    4300144: laser_canon1
+    4300146: laser_base5
+    4300148: laser_cuerpo2
+    4300150: laser_canon1
+    4300152: misiles4
+    4300154: canon_v5
+    4300156: canon_tb
+    4300158: canon_v6
+    4300160: canon_tb
+    4300162: canon_v7
+    4300164: canon_tb
+    4300166: canon_v8
+    4300168: canon_tb
+    4300170: misiles7
+    4300172: misiles8
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Prp_1
+    second: {fileID: 2100000, guid: 28e6693938cb4564b8a1d2517e48ce5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Prtc_1
+    second: {fileID: 2100000, guid: 1d9a8dc541ea9d14db31f4854a06ba59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuerpo1
+    second: {fileID: 2100000, guid: f84c4a177cadfdf46b9d7794b767059b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
+    private int playerLevel;
+    [SerializeField]
     private GameObject pnlMenu;
     [SerializeField]
     private CanvasGroup cnvFade;
@@ -47,12 +49,12 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(CorPlayBgmIN());
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
+    
     public void StartLevel(int lvl)
     {
         if (!isPressButton)
@@ -77,8 +79,18 @@ public class MainMenu : MonoBehaviour
         }
 
         cnvFade.alpha = 1f;
-       // Debug.Log("FIN- CorFadeIN");
-        SceneManager.LoadScene(lvl);
+        // Debug.Log("FIN- CorFadeIN");
+        if(lvl == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            PlayerData playerData = new PlayerData(lvl, Vector3.zero);
+            SaveSystem.SavePlayerData(playerData);
+            SceneManager.LoadScene(playerLevel);
+        }
+       
     }
 
     IEnumerator CorFadeOUT()
